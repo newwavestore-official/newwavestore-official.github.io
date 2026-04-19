@@ -1,0 +1,53 @@
+/* General Reset */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body { 
+    background-color: #000; 
+    color: #fff; 
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+    overflow: hidden;
+}
+
+.content { 
+    text-align: center; 
+}
+
+h1 { 
+    font-size: clamp(2.5rem, 8vw, 5rem); 
+    letter-spacing: 12px; 
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+p { 
+    letter-spacing: 5px; 
+    font-size: 0.8rem; 
+    opacity: 0.6; 
+    margin-bottom: 40px; 
+}
+
+.enter-btn {
+    padding: 12px 35px;
+    border: 1px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: 0.3s ease;
+    letter-spacing: 2px;
+    display: inline-block;
+}
+
+.enter-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
