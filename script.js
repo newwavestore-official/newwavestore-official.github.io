@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. WHATSAPP REDIRECT (Naira Format)
     const checkoutBtn = document.querySelector('.checkout-btn');
     checkoutBtn.addEventListener('click', () => {
-        const phoneNumber = "234XXXXXXXXXX"; // Put your number here
+        const phoneNumber = "2348029913798"; // Put your number here
         const message = `Hello New Wave! I'm ready to checkout. Total Order: ₦${totalPrice.toLocaleString()}.`;
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
