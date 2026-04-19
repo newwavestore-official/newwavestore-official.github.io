@@ -113,3 +113,117 @@ body {
 .img-box {
     background-color: #111;
     aspect-ratio: 1/1;
+}
+.selection-container {
+    margin-bottom: 15px;
+}
+
+.selection-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.label {
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    opacity: 0.5;
+}
+
+.options {
+    display: flex;
+    gap: 10px;
+}
+
+/* Base style for all option buttons */
+.opt-btn {
+    background: transparent;
+    border: 1px solid #333;
+    color: #fff;
+    font-size: 0.6rem;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* Style for when a size/color is selected */
+.opt-btn.active {
+    border-color: #fff;
+    background: #fff;
+    color: #000;
+}
+
+/* Color Circle Styles */
+.color-btn {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    padding: 0;
+}
+
+.color-btn.white { background: #fff; border-color: #fff; }
+.color-btn.black { background: #000; border-color: #333; }
+
+/* Feedback for the active color */
+.color-btn.active {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+/* Product Image Hover/Zoom Effect */
+.img-box {
+    overflow: hidden; /* Keeps the zoom inside the box */
+}
+
+.img-box img {
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .img-box img {
+    transform: scale(1.1); /* Slight zoom on hover/touch */
+}
+
+/* Sticky Checkout Bar Styling */
+.sticky-checkout {
+    position: fixed;
+    bottom: -100px; /* Hidden by default */
+    left: 0;
+    width: 100%;
+    background: #fff;
+    color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    z-index: 1000;
+    transition: bottom 0.4s ease-in-out;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+}
+
+/* Show the bar when items are added (we'll trigger this with JS later) */
+.sticky-checkout.active {
+    bottom: 0;
+}
+
+.total-label {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.total-price {
+    font-size: 1.1rem;
+    font-weight: 900;
+    display: block;
+}
+
+.checkout-btn {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
