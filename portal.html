@@ -3,31 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEW WAVE | PORTAL</title>
+    <title>NEW WAVE | Early Access</title>
     <link rel="stylesheet" href="portal.css">
-    <link rel="icon" type="image/png" href="Logo.png">
 </head>
 <body>
 
-    <div class="portal-container">
-        <img src="Logo.png" class="logo" alt="New Wave">
+<div class="login-container">
+    <div class="login-box">
+        <h1>NEW WAVE</h1>
+        <div class="subtitle">Enter Early Access</div>
         
-        <div id="countdown">00 : 00 : 00 : 00</div>
-
-        <div class="section">
-            <p class="label">REGISTRATION</p>
-            <button class="btn white-btn" onclick="joinWaitlist()">REQUEST EARLY ACCESS</button>
-        </div>
-
-        <div class="section gate">
-            <p class="label">PRIVATE ENTRY</p>
-            <input type="text" id="accessCode" placeholder="ENTER ACCESS CODE">
-            <button class="btn outline-btn" onclick="checkCode()">UNLOCK SHOP</button>
-        </div>
-
-        <p class="footer-status">SYSTEM STATUS: ACTIVE // SHOP_LOCKED</p>
+        <form id="accessForm">
+            <input type="text" id="userName" placeholder="FULL NAME" required>
+            <input type="tel" id="userPhone" placeholder="PHONE NUMBER (WHATSAPP)" required>
+            <input type="password" id="passcode" placeholder="PASSCODE" required>
+            
+            <button type="submit" id="submitBtn">CONFIRM</button>
+        </form>
+        
+        <p id="msg">Invalid Passcode. Access Denied.</p>
     </div>
+</div>
 
-    <script src="portal.js"></script>
+<script src="portal.js"></script>
 </body>
 </html>
