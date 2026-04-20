@@ -1,56 +1,102 @@
-// 1. COUNTDOWN TIMER
-// Set your specific July launch date here
-const launchDate = new Date("July 1, 2026 00:00:00").getTime();
+/* NEW WAVE | PORTAL.JS 
+   Target Drop: July 1, 2026 
+*/
 
-const timer = setInterval(function() {
-    const now = new Date().getTime();
-    const diff = launchDate - now;
+// 1. CONFIGURATION
+const correctPass = "WAVE01";
+const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; 
+const dropDateString = "July 1, 2026 00:00:00"; 
 
-    // If the countdown finishes
-    if (diff < 0) {
-        clearInterval(timer);
-        document.getElementById("countdown").innerHTML = "COLLECTION LIVE";
-        return;
-    }
+// 2. SELECT ELEMENTS
+const form = document.getElementById('accessForm');
+const msg = document.getElementById('msg');
+const loginBox = document.querySelector('.login-box');
 
-    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const s = Math.floor((diff % (1000 * 60)) / 1000);
+// 3. THE MAIN EVENT
+form.addEventListener('submit', function(e) {
+    e.preventDefault(); 
 
-    // Displays as 00 : 00 : 00 : 00
-    document.getElementById("countdown").innerHTML = 
-        `${d.toString().padStart(2, '0')} : ${h.toString().padStart(2, '0')} : ${m.toString().padStart(2, '0')} : ${s.toString().padStart(2, '0')}`;
-}, 1000);
+    const name = document.getElementById('userName').value.trim();
+    const phone = document.getElementById('userPhone').value.trim();
+    const inputPass = document.getElementById('passcode').value.trim();
 
-// 2. WHATSAPP WAITLIST FUNCTION
-function joinWaitlist() {
-    const phone = "2348029913798";
-    const msg = "I'm ready for the New Wave drop. Add me to the early access list.";
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, "_blank");
-}
+    if (inputPass === correctPass) {
+        // --- SUCCESS PATH ---
 
-// 3. SECRET ACCESS CODE (NO REDIRECT)
-function checkCode() {
-    const input = document.getElementById("accessCode").value.toUpperCase();
-    const correctCode = "WAVE01"; // You can change this to your desired code
-    
-    if (input === correctCode) {
-        // Target the 'gate' section and replace its content
-        const gateSection = document.querySelector('.gate');
-        
-        // This removes the input box/button and shows a locked-in message
-        gateSection.innerHTML = `
-            <div style="padding: 20px; border: 1px solid #fff; animation: fadeIn 1s ease;">
-                <p style="color: #fff; letter-spacing: 3px; font-size: 14px; margin: 0 0 10px 0;">ACCESS GRANTED</p>
-                <p style="color: #666; font-size: 10px; letter-spacing: 1px; line-height: 1.5;">
-                    YOUR IDENTITY HAS BEEN VERIFIED.<br>
-                    YOU ARE ON THE LIST FOR JULY.<br>
-                    WATCH YOUR WHATSAPP FOR UPDATES.
-                </p>
-            </div>
-        `;
+        // Log data to Google Sheets
+        if (scriptURL !== 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify({
+                    "name": name,
+                    "phone": phone,
+                    "status": "SUCCESS"
+                })
+            }).catch(err => console.log("Logging failed."));
+        }
+
+        // Transform UI
+        loginBox.style.opacity = "0"; 
+
+        setTimeout(() => {
+            loginBox.innerHTML = `
+                <div class="logo-container">
+                    <img src="Logo.png" alt="Logo" class="logo" style="width:100%; max-width:180px; margin: 0 auto; display: block;">
+                </div>
+                <h2 style="color: #fff; letter-spacing: 5px; margin-top: 25px; font-weight: 900;">ACCESS GRANTED</h2>
+                <p style="color: #666; font-size: 11px; margin-bottom: 20px; letter-spacing: 1px;">WELCOME TO THE WAVE, ${name.toUpperCase()}</p>
+                
+                <div style="height: 1px; width: 40px; background: #333; margin: 20px auto;"></div>
+
+                <div id="countdown" style="color: #fff; font-family: 'Courier New', monospace; font-size: 28px; margin: 20px 0; font-weight: bold; letter-spacing: 2px;">
+                    00d 00h 00m 00s
+                </div>
+
+                <p style="color: #444; font-size: 10px; letter-spacing: 2px; text-transform: uppercase;">TIME UNTIL DROP 01</p>
+                <p style="color: #888; font-size: 11px; margin-top: 20px;">Identity Verified: ${phone}</p>
+            `;
+            loginBox.style.opacity = "1";
+            loginBox.style.transition = "opacity 0.5s ease-in";
+
+            startCountdown(); // Start the July 1st timer
+        }, 400);
+
     } else {
-        alert("INVALID ACCESS CODE.");
+        // --- FAILURE PATH ---
+        msg.style.display = 'block';
+        msg.style.color = '#ff4444';
+        msg.innerText = "Invalid Passcode. Access Denied.";
+
+        setTimeout(() => { msg.style.display = 'none'; }, 3000);
     }
+});
+
+// 4. THE COUNTDOWN ENGINE
+function startCountdown() {
+    const targetDate = new Date(dropDateString).getTime();
+
+    const interval = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        const timerElement = document.getElementById("countdown");
+        if (!timerElement) return; 
+
+        timerElement.innerHTML = 
+            (days < 10 ? "0" + days : days) + "d " + 
+            (hours < 10 ? "0" + hours : hours) + "h " + 
+            (minutes < 10 ? "0" + minutes : minutes) + "m " + 
+            (seconds < 10 ? "0" + seconds : seconds) + "s ";
+
+        if (distance < 0) {
+            clearInterval(interval);
+            timerElement.innerHTML = "DROP IS LIVE";
+        }
+    }, 1000);
 }
