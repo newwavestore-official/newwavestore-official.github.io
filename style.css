@@ -61,11 +61,7 @@ body {
     opacity: 0.4;
 }
 /* Update your container to stack items properly */
-.splash-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
 
 /* This is the fix for your text being too close to the button */
 .splash-text {
@@ -241,4 +237,24 @@ body {
     font-weight: bold;
     letter-spacing: 1px;
     cursor: pointer;
+}
+.welcome-msg {
+    font-size: 0.65rem;       /* Keeps it sleek and high-end */
+    font-weight: 400;        /* Not too bulky */
+    letter-spacing: 3px;      /* Spaced out for a premium streetwear look */
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 50px;      /* Creates a clear gap above the logo */
+    text-align: center;
+    width: 90%;               /* Keeps it from hitting screen edges on mobile */
+    line-height: 1.5;
+}
+
+/* Ensure the container stacks everything correctly */
+.splash-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
