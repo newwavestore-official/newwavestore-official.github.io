@@ -87,6 +87,7 @@ button:hover {
 }
 
 #msg {
+    display:none;
     color: #ff4444;
     font-size: 12px;
     margin-top: 15px;
