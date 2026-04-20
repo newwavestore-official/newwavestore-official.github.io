@@ -60,6 +60,21 @@ body {
     letter-spacing: 1px;
     opacity: 0.4;
 }
+/* Update your container to stack items properly */
+.splash-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* This is the fix for your text being too close to the button */
+.splash-text {
+    font-size: 0.65rem; /* Small and premium */
+    letter-spacing: 3px;
+    opacity: 0.8;
+    margin-bottom: 30px; /* This creates the gap you need */
+    text-transform: uppercase;
+}
 
 /* --- SHOP PAGE (shop.html) --- */
 .shop-body {
