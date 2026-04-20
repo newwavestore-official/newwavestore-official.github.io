@@ -258,3 +258,116 @@ body {
     justify-content: center;
     width: 100%;
 }
+/* Main Footer Container */
+.site-footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 100px 20px 40px;
+    border-top: 2px solid #ffffff; /* High-contrast top border */
+    font-family: 'Inter', 'Helvetica', sans-serif;
+}
+
+/* Content Wrapper */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+/* Brand Section */
+.brand-info {
+    flex: 2;
+    min-width: 300px;
+}
+
+.brand-info h3 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+.brand-info p {
+    color: #ffffff;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    max-width: 500px;
+    opacity: 0.9;
+}
+
+/* Links and Icon Section */
+.footer-links {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    gap: 80px;
+    min-width: 300px;
+}
+
+.link-group h4 {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.link-group a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: opacity 0.3s ease;
+}
+
+/* TikTok Icon Specific Styling */
+.tiktok-icon svg {
+    fill: #ffffff;
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s ease;
+}
+
+.tiktok-icon:hover svg {
+    transform: scale(1.1);
+    opacity: 0.7;
+}
+
+/* Bottom Bar (Legal) */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 80px auto 0;
+    padding-top: 30px;
+    border-top: 1px solid #333;
+}
+
+.footer-bottom p {
+    font-size: 0.7rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .brand-info p {
+        margin: 0 auto;
+    }
+
+    .footer-links {
+        justify-content: center;
+        gap: 60px;
+    }
+    
+    .footer-bottom {
+        text-align: center;
+    }
+}
