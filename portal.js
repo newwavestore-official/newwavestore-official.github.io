@@ -4,7 +4,7 @@
 
 // 1. CONFIGURATION
 const correctPass = "WAVE01";
-const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; 
+const scriptURL = 'https://script.google.com/macros/s/AKfycbywh_pxPPPSORKJSog4xOLiFruHknGrvR8ohHR4smqjGpL1Kf8ffnBOluxz5J8mgmk/exec'; 
 const dropDateString = "July 1, 2026 00:00:00"; 
 
 // 2. SELECT ELEMENTS
