@@ -214,20 +214,26 @@ body {
 }
 
 /* --- STICKY CHECKOUT --- */
-.sticky-checkout {
-    position: fixed;
-    bottom: -600px; 
-    left: 0;
-    width: 100%;
-    background: #ffffff;
-    color: #000000;
-    padding: 20px;
-    z-index: 1000;
-    transition: bottom 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+/* This triggers when items are added to the cart */
+.sticky-checkout.active {
+    bottom: 0;
+    height: 85vh; 
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    overflow-y: auto;
+    margin-bottom:20px;
+    
+    /* --- THE BLUR MAGIC --- */
+    background: rgba(255, 255, 255, 0.85); /* Makes the white slightly see-through */
+    backdrop-filter: blur(10px);           /* Blurs the shop items behind it */
+    -webkit-backdrop-filter: blur(10px);    /* Required for Safari/iOS support */
+    
+    box-shadow: 0 -15px 40px rgba(0,0,0,0.4);
+    padding: 30px 20px;
 }
 
-.sticky-checkout.active { bottom: 0; }
+
+
 
 #customer-info {
     display: none; /* JS will toggle this to 'flex' */
