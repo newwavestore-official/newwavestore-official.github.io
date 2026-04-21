@@ -22,10 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 2. ADD TO CART LOGIC
-    
-
-        
-
     addButtons.forEach(button => {
         button.addEventListener('click', () => {
             const productCard = button.closest('.product-card');
@@ -60,6 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Update UI
             cartDisplay.innerText = `🛒 [${cartCount}]`;
             grandTotalDisplay.innerText = `₦${totalPrice.toLocaleString()}`;
+            
+            // SHOW the bar ONLY after an item is added
             checkoutBar.classList.add('active');
 
             // Feedback animation
@@ -97,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Trigger Paystack Popup
         let handler = PaystackPop.setup({
-            key: 'pk_live_98019618f5c7ca1a06b239a9dc75f41b71783ad7', // <-- CHANGE THIS TO YOUR LIVE KEY
+            key: 'pk_live_98019618f5c7ca1a06b239a9dc75f41b71783ad7',
             email: email,
             amount: totalPrice * 100, // Paystack uses Kobo
             currency: 'NGN',
