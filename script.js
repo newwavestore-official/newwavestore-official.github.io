@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const priceText = productCard.querySelector('.price').innerText;
             const priceValue = parseInt(priceText.replace(/[^0-9]/g, ''));
 
+            // Targeting specifically by your class names
             const selectedSize = productCard.querySelector('.size-btn.active');
             const selectedColor = productCard.querySelector('.color-btn.active');
 
@@ -54,11 +55,15 @@ document.addEventListener('DOMContentLoaded', () => {
             totalPrice += priceValue;
 
             // Update UI
-            cartDisplay.innerText = `🛒 [${cartCount}]`;
-            grandTotalDisplay.innerText = `₦${totalPrice.toLocaleString()}`;
+            cartDisplay.innerText = `[${cartCount}]`;
+            if(grandTotalDisplay) grandTotalDisplay.innerText = `₦${totalPrice.toLocaleString()}`;
             
-            // SHOW the bar ONLY after an item is added
-            checkoutBar.classList.add('active');
+            // SHOW the bar and prep the form visibility
+            if (cartItems.length > 0) {
+                checkoutBar.classList.add('active');
+                // Ensure customerInfo is ready to be shown when checkout is clicked
+                customerInfo.style.display = "none"; 
+            }
 
             // Feedback animation
             button.innerText = "ADDED";
@@ -75,9 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. PAYSTACK + WHATSAPP INTEGRATION
     checkoutBtn.addEventListener('click', () => {
         // Toggle form visibility on first click
-        if (customerInfo.style.display === "none") {
+        if (customerInfo.style.display === "none" || customerInfo.style.display === "") {
             customerInfo.style.display = "flex";
-            checkoutBtn.innerText = "PAY NOW";
+            checkoutBtn.innerText = "CONFIRM & PAY";
             return;
         }
 
@@ -124,7 +129,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     `Please process for delivery! 🌊`;
                 
                 const whatsappUrl = `https://wa.me/${myNumber}?text=${fullMessage}`;
-                window.open(whatsappUrl, '_blank');
+                
+                // Using window.location.href to ensure redirect triggers on all mobile browsers
+                window.location.href = whatsappUrl;
             },
             onClose: function() {
                 alert('Payment window closed. Your items are still in the cart.');
