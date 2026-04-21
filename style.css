@@ -10,7 +10,7 @@ body {
     line-height: 1.4;
 }
 
-/* --- RESTORED SPLASH PAGE (index.html) --- */
+/* --- PRECISE SPLASH PAGE RESTORATION --- */
 .splash-body {
     display: flex; 
     justify-content: center; 
@@ -26,62 +26,107 @@ body {
 .splash-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* This centers everything horizontally */
+    align-items: center;
     justify-content: center;
-    width: 90%;
-    text-align: center;
+    width: 100%;
+    height: 100%;
+    position: relative; /* Allows the footer to anchor to the bottom */
 }
 
-.main-logo {
-    width: 70%; /* Adjusted for the liquid bubble look */
-    max-width: 300px;
-    height: auto;
-    margin-bottom: 60px; /* Large gap below logo as seen in original */
-}
-
+/* 1. The Welcome Text at the top */
 .welcome-msg {
     font-size: 0.6rem;
-    letter-spacing: 5px; /* High-end spacing */
+    letter-spacing: 4px;
     text-transform: uppercase;
     color: #fff;
-    margin-bottom: 80px; /* Pushes the message up higher */
-    line-height: 2;
-    opacity: 0.9;
+    margin-top: -10vh; /* Pulls it slightly up from center */
+    margin-bottom: 60px;
+    line-height: 1.8;
+    text-align: center;
+    max-width: 80%;
+}
+
+/* 2. The Main Logo */
+.main-logo {
+    width: 65%;
+    max-width: 280px;
+    height: auto;
+    margin-bottom: 80px; /* Big gap before the bottom section starts */
+}
+
+/* 3. The Shop Section (Title + Button) */
+.shop-trigger-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px; /* The specific gap between text and button */
+}
+
+.drop-description {
+    font-size: 0.55rem;
+    letter-spacing: 2px;
+    color: #fff;
+    opacity: 0.8;
+    text-transform: uppercase;
 }
 
 .enter-btn {
-    padding: 15px 60px;
+    padding: 18px 55px;
     border: 1px solid #fff;
-    color: #000;
-    background-color: #fff; /* Restored the solid white button */
+    color: #fff;
+    background-color: transparent; /* Ghost button style as seen in original */
     text-decoration: none;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: bold;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     text-transform: uppercase;
     transition: 0.3s ease;
-    margin-bottom: 20px;
 }
 
 .enter-btn:hover {
-    background-color: transparent;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
 }
 
+/* 4. The Footer Email */
 .splash-footer {
     position: absolute;
-    bottom: 40px; /* Keeps email at the very bottom */
+    bottom: 30px;
     width: 100%;
+    text-align: center;
 }
 
 .splash-text {
+    font-size: 0.5rem; /* Very small, sleek size */
+    letter-spacing: 1.5px;
+    color: #fff !important; /* Forces white and kills the blue link */
+    opacity: 0.3;
+    text-decoration: none;
+    text-transform: lowercase; /* Matches the gmail look */
+}
+.shop-trigger-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Adjust this to make the gap bigger or smaller */
+}
+
+.drop-description {
     font-size: 0.55rem;
     letter-spacing: 2px;
-    color: #fff !important; /* Force white to fix the blue link issue */
-    opacity: 0.4;
-    text-decoration: none;
-    text-transform: uppercase;
+    color: #fff;
+    opacity: 0.8;
 }
+
+/* THE BLUE LINK KILLER */
+.splash-text {
+    font-size: 0.5rem;
+    letter-spacing: 1.5px;
+    color: #fff !important; /* Forces it to stay white */
+    text-decoration: none; /* Removes the underline */
+    opacity: 0.3;
+}
+
 
 /* --- SHOP PAGE (shop.html) --- */
 .shop-body { padding: 0 15px; }
