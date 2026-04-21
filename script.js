@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. ADD TO CART LOGIC
     
-checkoutBar.classList.add('active'); 
+
+        
 
     addButtons.forEach(button => {
         button.addEventListener('click', () => {
