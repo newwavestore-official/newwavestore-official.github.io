@@ -1,8 +1,6 @@
 /* --- GLOBAL STYLES --- */
 * { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
+    margin: 0; padding: 0; box-sizing: border-box; 
 }
 
 body { 
@@ -19,14 +17,11 @@ body {
     align-items: center; 
     height: 100vh;
     width: 100vw;
-    margin: 0;
-    padding: 0;
     overflow: hidden;
     background-color: #000;
     text-align: center;
 }
 
-/* Ensure this container centers everything in the middle of the screen */
 .splash-container {
     display: flex;
     flex-direction: column;
@@ -56,7 +51,7 @@ body {
     padding: 15px 45px;
     border: 1px solid #fff;
     color: #000;
-    background-color: #fff; /* High contrast for the main button */
+    background-color: #fff;
     text-decoration: none;
     font-size: 0.8rem;
     font-weight: bold;
@@ -86,19 +81,49 @@ body {
     text-transform: uppercase;
 }
 
+/* --- SHOP PAGE (shop.html) --- */
+.shop-body { padding: 0 15px; }
+
+.shop-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #1a1a1a;
+    margin-bottom: 30px;
+    position: sticky;
+    top: 0;
+    background: #000;
+    z-index: 100;
+}
+
+.nav-logo { height: 30px; width: auto; }
+
+.cart-count { font-size: 0.9rem; font-weight: bold; }
+
+.drop-title {
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    opacity: 0.5;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
 
 /* --- PRODUCT GRID --- */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
-    margin-bottom: 100px; /* Extra space so bar doesn't cover products */
+    margin-bottom: 120px; 
 }
+
+.product-card { display: flex; flex-direction: column; }
 
 .img-box {
     background-color: #111;
     aspect-ratio: 1/1;
     overflow: hidden;
+    margin-bottom: 15px;
 }
 
 .img-box img {
@@ -108,15 +133,19 @@ body {
     transition: transform 0.5s ease;
 }
 
-.product-card:hover .img-box img { transform: scale(1.1); }
+.product-card:hover .img-box img { transform: scale(1.05); }
+
+.product-info h3 { font-size: 0.85rem; margin-bottom: 5px; }
+.price { font-size: 0.8rem; opacity: 0.8; margin-bottom: 15px; }
 
 .opt-btn {
     background: transparent;
     border: 1px solid #333;
     color: #fff;
     font-size: 0.6rem;
-    padding: 4px 8px;
+    padding: 6px 10px;
     cursor: pointer;
+    margin-right: 5px;
 }
 
 .opt-btn.active {
@@ -125,10 +154,22 @@ body {
     color: #000;
 }
 
-/* --- THE FIX: CLEAN STICKY CHECKOUT --- */
+.add-btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 10px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* --- STICKY CHECKOUT --- */
 .sticky-checkout {
     position: fixed;
-    bottom: -500px; /* Hidden deep off-screen */
+    bottom: -600px; 
     left: 0;
     width: 100%;
     background: #ffffff;
@@ -139,11 +180,10 @@ body {
     box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
 }
 
-.sticky-checkout.active {
-    bottom: 0; /* Slides up when JS triggers it */
-}
+.sticky-checkout.active { bottom: 0; }
 
 #customer-info {
+    display: none; /* JS will toggle this to 'flex' */
     flex-direction: column;
     gap: 12px;
     margin-bottom: 20px;
@@ -158,7 +198,7 @@ body {
     padding: 12px;
     font-family: inherit;
     font-size: 0.85rem;
-    color: #000; /* Critical: makes sure text is visible on light background */
+    color: #000;
 }
 
 .checkout-footer {
@@ -167,11 +207,7 @@ body {
     align-items: center;
 }
 
-.total-price {
-    font-size: 1.1rem;
-    font-weight: 900;
-    color: #000; /* Ensure price is black on white background */
-}
+.total-price { font-size: 1.1rem; font-weight: 900; color: #000; }
 
 .checkout-btn {
     background: #000;
@@ -186,11 +222,10 @@ body {
 /* --- FOOTER --- */
 .site-footer {
     background-color: #000;
-    color: #fff;
-    padding: 60px 20px;
+    padding: 80px 20px 40px;
     border-top: 1px solid #1a1a1a;
-    text-align: center;
+    text-align: left;
 }
 
-.footer-logo { font-weight: 900; margin-bottom: 15px; }
-.footer-bottom { opacity: 0.4; font-size: 0.6rem; margin-top: 40px; }
+.footer-logo { font-size: 1.2rem; font-weight: 900; margin-bottom: 20px; }
+.footer-bottom { opacity: 0.3; font-size: 0.6rem; margin-top: 50px; text-align: center; }
