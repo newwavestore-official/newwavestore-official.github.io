@@ -196,11 +196,11 @@ body {
 
 /* Sticky Checkout Bar Styling */
 /* --- THE "NEW WAVE" HIDDEN CHECKOUT BAR --- */
-.sticky-checkout {
+
 /* --- THE FIX: HIDDEN UNTIL ACTIVE --- */
 .sticky-checkout {
     position: fixed;
-    bottom: -200px; /* This pushes it completely off the screen */
+    bottom: -400px; /* This pushes it completely off the screen */
     left: 0;
     width: 100%;
     background: #ffffff;
