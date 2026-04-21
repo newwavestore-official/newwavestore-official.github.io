@@ -6,7 +6,8 @@
     <title>SHOP | NEW WAVE</title>
     <link rel="icon" type="image/png" href="Logo.png">
 <link rel="apple-touch-icon" href="Logo.png">
-    
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="shop-body">
@@ -277,12 +278,25 @@
 
     <script src="script.js"></script>
     <div class="sticky-checkout" id="checkout-bar">
-    <div class="total-info">
-        <span class="total-label">TOTAL:</span>
-        <span class="total-price" id="grand-total">₦0</span>
+    <div id="checkout-container">
+        <div id="customer-info" style="display: none;">
+            <h4 class="form-title">DELIVERY DETAILS</h4>
+            <input type="text" id="customer-name" placeholder="Full Name" required>
+            <input type="email" id="email-address" placeholder="Email Address" required>
+            <input type="tel" id="phone-number" placeholder="Phone Number" required>
+            <textarea id="delivery-address" placeholder="Delivery Address (House No, Street, State)" required></textarea>
+        </div>
+
+        <div class="checkout-footer">
+            <div class="total-info">
+                <span class="total-label">TOTAL:</span>
+                <span class="total-price" id="grand-total">₦0</span>
+            </div>
+            <button class="checkout-btn" id="main-checkout-btn">CHECKOUT</button>
+        </div>
     </div>
-    <button class="checkout-btn">CHECKOUT VIA WHATSAPP</button>
 </div>
+
 <footer class="site-footer">
     <div class="footer-content">
         <div class="footer-section brand-info">
