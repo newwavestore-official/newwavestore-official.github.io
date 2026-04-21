@@ -12,16 +12,21 @@ body {
     line-height: 1.4;
 }
 
-/* --- SPLASH PAGE --- */
+/* --- SPLASH PAGE (index.html) --- */
 .splash-body {
     display: flex; 
     justify-content: center; 
     align-items: center; 
     height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
+    background-color: #000;
     text-align: center;
 }
 
+/* Ensure this container centers everything in the middle of the screen */
 .splash-container {
     display: flex;
     flex-direction: column;
@@ -31,52 +36,56 @@ body {
 }
 
 .main-logo {
-    width: 85%;
-    max-width: 400px;
+    width: 80%;
+    max-width: 350px;
     height: auto;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .welcome-msg {
     font-size: 0.65rem;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     text-transform: uppercase;
     color: #fff;
-    margin-bottom: 50px;
-    line-height: 1.5;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    opacity: 0.9;
 }
 
 .enter-btn {
-    padding: 12px 35px;
+    padding: 15px 45px;
     border: 1px solid #fff;
-    color: #fff;
+    color: #000;
+    background-color: #fff; /* High contrast for the main button */
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: bold;
     transition: 0.3s ease;
     letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .enter-btn:hover {
-    background-color: #fff;
-    color: #000;
+    background-color: transparent;
+    color: #fff;
 }
 
-/* --- SHOP PAGE NAV --- */
-.shop-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-    border-bottom: 1px solid #1a1a1a;
-    margin-bottom: 30px;
-    position: sticky;
-    top: 0;
-    background: #000;
-    z-index: 100;
+.splash-footer {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
 }
 
-.nav-logo { height: 35px; width: auto; }
+.splash-text {
+    font-size: 0.55rem;
+    letter-spacing: 2px;
+    color: #fff;
+    opacity: 0.5;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
 
 /* --- PRODUCT GRID --- */
 .product-grid {
