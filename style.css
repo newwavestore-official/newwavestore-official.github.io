@@ -196,20 +196,34 @@ body {
 
 /* Sticky Checkout Bar Styling */
 .sticky-checkout {
-    position: fixed;
-    bottom: -100px; /* Hidden by default */
-    left: 0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#customer-info {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+#customer-info input, #customer-info textarea {
     width: 100%;
-    background: #fff;
-    color: #000;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 0.85rem;
+}
+
+#customer-info textarea { height: 80px; resize: none; }
+
+.checkout-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 5%;
-    z-index: 1000;
-    transition: bottom 0.4s ease-in-out;
-    box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
 }
+
 
 /* Show the bar when items are added (we'll trigger this with JS later) */
 .sticky-checkout.active {
