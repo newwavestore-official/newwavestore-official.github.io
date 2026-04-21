@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Trigger Paystack Popup
         let handler = PaystackPop.setup({
-            key: 'pk_live_YOUR_ACTUAL_KEY_HERE', // <-- CHANGE THIS TO YOUR LIVE KEY
+            key: 'pk_live_98019618f5c7ca1a06b239a9dc75f41b71783ad7', // <-- CHANGE THIS TO YOUR LIVE KEY
             email: email,
             amount: totalPrice * 100, // Paystack uses Kobo
             currency: 'NGN',
