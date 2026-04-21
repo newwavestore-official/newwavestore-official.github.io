@@ -185,6 +185,7 @@ body {
 .product-info h3 { font-size: 0.85rem; margin-bottom: 5px; }
 .price { font-size: 0.8rem; opacity: 0.8; margin-bottom: 15px; }
 
+/* Base style for all options (Sizes & Colors) */
 .opt-btn {
     background: transparent;
     border: 1px solid #333;
@@ -193,13 +194,42 @@ body {
     padding: 6px 10px;
     cursor: pointer;
     margin-right: 5px;
+    transition: 0.2s;
 }
 
+/* Specific styling for COLOR circles */
+.color-btn {
+    width: 22px;   /* Makes them circular */
+    height: 22px;
+    border-radius: 50%;
+    padding: 0;    /* Removes padding so they stay round */
+}
+
+/* Ensure the Black button is visible on the black background */
+.color-btn.black {
+    background-color: #000;
+    border: 1px solid #ffffff; /* This white border is the key */
+}
+
+.color-btn.white {
+    background-color: #fff;
+    border: 1px solid #fff;
+}
+
+/* Selection feedback */
 .opt-btn.active {
     border-color: #fff;
     background: #fff;
     color: #000;
 }
+
+/* Special 'Active' look for Colors (so they don't just turn all white) */
+.color-btn.active {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+    transform: scale(1.1);
+}
+
 
 .add-btn {
     width: 100%;
