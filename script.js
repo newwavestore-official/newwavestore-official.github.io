@@ -1,12 +1,14 @@
-// NEW WAVE - Advanced WhatsApp Checkout Script
+// NEW WAVE - Official Paystack + WhatsApp Checkout Script
 let cartCount = 0;
 let totalPrice = 0;
-let cartItems = []; // This stores the details of every item added
+let cartItems = []; 
 
 document.addEventListener('DOMContentLoaded', () => {
     const cartDisplay = document.querySelector('.cart-count');
     const grandTotalDisplay = document.getElementById('grand-total');
     const checkoutBar = document.getElementById('checkout-bar');
+    const checkoutBtn = document.getElementById('main-checkout-btn');
+    const customerInfo = document.getElementById('customer-info');
     const addButtons = document.querySelectorAll('.add-btn');
 
     // 1. SIZE & COLOR SELECTION LOGIC
@@ -39,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const size = selectedSize.getAttribute('data-size');
             const color = selectedColor.getAttribute('data-color');
 
-            // Push item details to our cart list
+            // Push item details
             cartItems.push({
                 name: productName,
                 size: size,
@@ -68,20 +70,65 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. GENERATE DETAILED WHATSAPP MESSAGE
-    const checkoutBtn = document.querySelector('.checkout-btn');
+    // 3. PAYSTACK + WHATSAPP INTEGRATION
     checkoutBtn.addEventListener('click', () => {
-        const phoneNumber = "2348029913798";
-        
-        // Build the item list string
-        let itemDetails = "";
-        cartItems.forEach((item, index) => {
-            itemDetails += `${index + 1}. ${item.name} (${item.color}, Size ${item.size}) - ${item.price}\n`;
+        // Toggle form visibility on first click
+        if (customerInfo.style.display === "none") {
+            customerInfo.style.display = "flex";
+            checkoutBtn.innerText = "PAY NOW";
+            return;
+        }
+
+        // Get delivery details from the form
+        const name = document.getElementById('customer-name').value;
+        const email = document.getElementById('email-address').value;
+        const phone = document.getElementById('phone-number').value;
+        const address = document.getElementById('delivery-address').value;
+
+        // Final Validation
+        if (!name || !email || !phone || !address) {
+            alert("Please fill in all delivery details before paying!");
+            return;
+        }
+
+        // Trigger Paystack Popup
+        let handler = PaystackPop.setup({
+            key: 'pk_live_YOUR_ACTUAL_KEY_HERE', // <-- CHANGE THIS TO YOUR LIVE KEY
+            email: email,
+            amount: totalPrice * 100, // Paystack uses Kobo
+            currency: 'NGN',
+            ref: 'NW-' + Math.floor((Math.random() * 1000000000) + 1),
+            callback: function(response) {
+                // Success! Redirect to WhatsApp with receipt
+                const myNumber = "2348029913798";
+                
+                let itemDetails = "";
+                cartItems.forEach((item, index) => {
+                    itemDetails += `${index + 1}. ${item.name} (${item.color}, Size ${item.size}) - ${item.price}%0A`;
+                });
+
+                const fullMessage = 
+                    `*NEW WAVE ORDER* ✅%0A` +
+                    `*Status:* PAID%0A` +
+                    `*Ref:* ${response.reference}%0A` +
+                    `--------------------------%0A` +
+                    `*CUSTOMER INFO*%0A` +
+                    `*Name:* ${name}%0A` +
+                    `*Phone:* ${phone}%0A` +
+                    `*Address:* ${address}%0A%0A` +
+                    `*ITEMS:*%0A${itemDetails}%0A` +
+                    `*TOTAL PAID:* ₦${totalPrice.toLocaleString()}%0A` +
+                    `--------------------------%0A` +
+                    `Please process for delivery! 🌊`;
+                
+                const whatsappUrl = `https://wa.me/${myNumber}?text=${fullMessage}`;
+                window.open(whatsappUrl, '_blank');
+            },
+            onClose: function() {
+                alert('Payment window closed. Your items are still in the cart.');
+            }
         });
 
-        const fullMessage = `Hello New Wave! 🌊\n\nI'd like to order:\n${itemDetails}\nTOTAL: ₦${totalPrice.toLocaleString()}\n\nPlease confirm availability!`;
-        
-        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(fullMessage)}`;
-        window.open(whatsappUrl, '_blank');
+        handler.openIframe();
     });
 });
