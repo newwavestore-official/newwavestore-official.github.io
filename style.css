@@ -197,24 +197,27 @@ body {
 /* Sticky Checkout Bar Styling */
 /* --- THE "NEW WAVE" HIDDEN CHECKOUT BAR --- */
 .sticky-checkout {
+/* --- THE FIX: HIDDEN UNTIL ACTIVE --- */
+.sticky-checkout {
     position: fixed;
-    bottom: -100%; /* Hidden off-screen by default */
+    bottom: -200px; /* This pushes it completely off the screen */
     left: 0;
     width: 100%;
     background: #ffffff;
     color: #000000;
     padding: 20px;
     z-index: 1000;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth slide up */
-    box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
-    visibility: hidden; /* Extra safety so it's not clickable while hidden */
+    transition: bottom 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth slide up effect */
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
 }
 
-/* When items are added, JS adds the 'active' class */
+/* This class is added by JS only when an item is added to cart */
 .sticky-checkout.active {
-    bottom: 0; /* Slides up into view */
-    visibility: visible;
+    bottom: 0; 
 }
+
+
+
 
 
 #customer-info {
