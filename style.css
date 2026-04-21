@@ -10,54 +10,57 @@ body {
     line-height: 1.4;
 }
 
-/* --- SPLASH PAGE (index.html) --- */
+/* --- RESTORED SPLASH PAGE (index.html) --- */
 .splash-body {
     display: flex; 
     justify-content: center; 
     align-items: center; 
     height: 100vh;
     width: 100vw;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
     background-color: #000;
-    text-align: center;
 }
 
 .splash-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* This centers everything horizontally */
     justify-content: center;
-    width: 100%;
+    width: 90%;
+    text-align: center;
 }
 
 .main-logo {
-    width: 80%;
-    max-width: 350px;
+    width: 70%; /* Adjusted for the liquid bubble look */
+    max-width: 300px;
     height: auto;
-    margin-bottom: 30px;
+    margin-bottom: 60px; /* Large gap below logo as seen in original */
 }
 
 .welcome-msg {
-    font-size: 0.65rem;
-    letter-spacing: 4px;
+    font-size: 0.6rem;
+    letter-spacing: 5px; /* High-end spacing */
     text-transform: uppercase;
     color: #fff;
-    margin-bottom: 40px;
-    line-height: 1.6;
+    margin-bottom: 80px; /* Pushes the message up higher */
+    line-height: 2;
     opacity: 0.9;
 }
 
 .enter-btn {
-    padding: 15px 45px;
+    padding: 15px 60px;
     border: 1px solid #fff;
     color: #000;
-    background-color: #fff;
+    background-color: #fff; /* Restored the solid white button */
     text-decoration: none;
     font-size: 0.8rem;
     font-weight: bold;
-    transition: 0.3s ease;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-transform: uppercase;
+    transition: 0.3s ease;
+    margin-bottom: 20px;
 }
 
 .enter-btn:hover {
@@ -67,16 +70,15 @@ body {
 
 .splash-footer {
     position: absolute;
-    bottom: 30px;
+    bottom: 40px; /* Keeps email at the very bottom */
     width: 100%;
-    text-align: center;
 }
 
 .splash-text {
     font-size: 0.55rem;
     letter-spacing: 2px;
-    color: #fff;
-    opacity: 0.5;
+    color: #fff !important; /* Force white to fix the blue link issue */
+    opacity: 0.4;
     text-decoration: none;
     text-transform: uppercase;
 }
