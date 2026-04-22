@@ -199,21 +199,37 @@ body {
 
 /* Specific styling for COLOR circles */
 .color-btn {
-    width: 22px;   /* Makes them circular */
-    height: 22px;
+/* Specific styling for COLOR circles */
+.color-btn {
+    width: 24px;   /* Slightly bigger for better touch target */
+    height: 24px;
     border-radius: 50%;
-    padding: 0;    /* Removes padding so they stay round */
+    padding: 0;    
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    background-clip: content-box; /* This creates the gap when padding is added */
+    border: 1px solid transparent; 
 }
 
-/* Ensure the Black button is visible on the black background */
+/* Ensure the Black button is visible */
 .color-btn.black {
     background-color: #000;
-    border: 1px solid #ffffff; /* This white border is the key */
+    border: 1px solid #333; /* Dark border so it doesn't vanish */
 }
 
 .color-btn.white {
     background-color: #fff;
-    border: 1px solid #fff;
+    border: 1px solid #eee;
+}
+
+/* THE FIX: Special 'Active' look for Colors */
+/* Instead of turning the button white, we add a ring around it */
+.color-btn.active {
+    background-color: inherit; /* Keeps its original color (Black or White) */
+    border: 2px solid #ffffff !important; /* The white selection ring */
+    padding: 3px; /* This creates the space between the ring and the color */
+    transform: scale(1.1); /* Slight pop to show it's selected */
+    outline: none; /* Removed the old outline to use the cleaner border-padding method */
 }
 
 /* Selection feedback */
