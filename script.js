@@ -11,15 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const customerInfo = document.getElementById('customer-info');
     const addButtons = document.querySelectorAll('.add-btn');
 
-    // 1. SIZE & COLOR SELECTION LOGIC
+    
+        // 1. SIZE & COLOR SELECTION LOGIC (Enhanced for the Ring Effect)
     const optionButtons = document.querySelectorAll('.opt-btn');
     optionButtons.forEach(btn => {
         btn.addEventListener('click', function() {
             const parent = this.parentElement;
+            // This removes 'active' from siblings but keeps '.black' or '.white'
             parent.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
             this.classList.add('active');
+            
+            // Helpful for debugging - check your console to see if it's picking it up
+            console.log("Selected:", this.innerText || this.getAttribute('data-color'));
         });
     });
+
 
     // 2. ADD TO CART LOGIC
     addButtons.forEach(button => {
