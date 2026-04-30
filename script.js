@@ -1,234 +1,159 @@
 let cartItems = JSON.parse(localStorage.getItem("nw_cart")) || [];
+// NEW WAVE - Official Paystack + WhatsApp Checkout Script
 let cartCount = 0;
 let totalPrice = 0;
+let cartItems = []; 
 
-let currentProduct = {};
-let selectedSize = null;
-let selectedColor = null;
+document.addEventListener('DOMContentLoaded', () => {
+    const cartDisplay = document.querySelector('.cart-count');
+    const grandTotalDisplay = document.getElementById('grand-total');
+    const checkoutBar = document.getElementById('checkout-bar');
+    const checkoutBtn = document.getElementById('main-checkout-btn');
+    const customerInfo = document.getElementById('customer-info');
+    const addButtons = document.querySelectorAll('.add-btn');
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    // ===================== ELEMENTS =====================
-    const cartDisplay = document.querySelector(".cart-count");
-    const grandTotal = document.getElementById("grand-total");
-
-    const modal = document.getElementById("product-modal");
-    const modalImg = document.getElementById("modal-img");
-    const modalName = document.getElementById("modal-name");
-    const modalPrice = document.getElementById("modal-price");
-    const closeModal = document.getElementById("close-modal");
-    const modalAddBtn = document.getElementById("modal-add-btn");
-
-    const summaryList = document.getElementById("summary-list");
-    const summaryContainer = document.getElementById("cart-items-preview");
-
-    const toast = document.getElementById("toast");
-
-    const checkoutBtn = document.getElementById("main-checkout-btn");
-
-    // ===================== TOAST =====================
-    function showToast(msg = "Item added ✓") {
-        toast.innerText = msg;
-        toast.classList.add("show");
-
-        setTimeout(() => {
-            toast.classList.remove("show");
-        }, 1500);
-    }
-
-    // ===================== OPEN MODAL =====================
-    document.querySelectorAll(".img-box").forEach(img => {
-        img.addEventListener("click", () => {
-
-            const card = img.closest(".product-card");
-
-            currentProduct = {
-                name: card.querySelector("h3").innerText,
-                priceText: card.querySelector(".price").innerText,
-                price: parseInt(card.querySelector(".price").innerText.replace(/[^0-9]/g, "")),
-                img: img.querySelector("img").src
-            };
-
-            modalImg.src = currentProduct.img;
-            modalName.innerText = currentProduct.name;
-            modalPrice.innerText = currentProduct.priceText;
-
-            modal.style.display = "flex";
+    
+        // 1. SIZE & COLOR SELECTION LOGIC (Enhanced for the Ring Effect)
+    const optionButtons = document.querySelectorAll('.opt-btn');
+    optionButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const parent = this.parentElement;
+            // This removes 'active' from siblings but keeps '.black' or '.white'
+            parent.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Helpful for debugging - check your console to see if it's picking it up
+            console.log("Selected:", this.innerText || this.getAttribute('data-color'));
         });
     });
 
-    // CLOSE MODAL
-    closeModal.onclick = () => modal.style.display = "none";
-    window.onclick = (e) => {
-        if (e.target == modal) modal.style.display = "none";
-    };
 
-    // ===================== SIZE SELECT =====================
-    document.querySelectorAll(".size-btn").forEach(btn => {
-        btn.onclick = () => {
-            document.querySelectorAll(".size-btn").forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-            selectedSize = btn.dataset.size;
-        };
-    });
+    // 2. ADD TO CART LOGIC
+    addButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const productCard = button.closest('.product-card');
+            const productName = productCard.querySelector('h3').innerText;
+            const priceText = productCard.querySelector('.price').innerText;
+            const priceValue = parseInt(priceText.replace(/[^0-9]/g, ''));
 
-    // ===================== COLOR SELECT =====================
-    document.querySelectorAll(".color-btn").forEach(btn => {
-        btn.onclick = () => {
-            document.querySelectorAll(".color-btn").forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-            selectedColor = btn.dataset.color;
-        };
-    });
+            // Targeting specifically by your class names
+            const selectedSize = productCard.querySelector('.size-btn.active');
+            const selectedColor = productCard.querySelector('.color-btn.active');
 
-    // ===================== ADD TO CART =====================
-    modalAddBtn.onclick = () => {
+            // Validation
+            if (!selectedSize || !selectedColor) {
+                alert("Please select both SIZE and COLOR first!");
+                return;
+            }
 
-        if (!selectedSize || !selectedColor) {
-            alert("Select size and color");
-            return;
-        }
+            const size = selectedSize.getAttribute('data-size');
+            const color = selectedColor.getAttribute('data-color');
 
-        let existing = cartItems.find(item =>
-            item.name === currentProduct.name &&
-            item.size === selectedSize &&
-            item.color === selectedColor
-        );
-
-        if (existing) {
-            existing.qty += 1;
-        } else {
+            // Push item details
             cartItems.push({
-                name: currentProduct.name,
-                size: selectedSize,
-                color: selectedColor,
-                price: currentProduct.price,
-                qty: 1
+                name: productName,
+                size: size,
+                color: color,
+                price: priceText
             });
-        }
 
-        modal.style.display = "none";
+            // Update Totals
+            cartCount++;
+            totalPrice += priceValue;
 
-        selectedSize = null;
-        selectedColor = null;
+            // Update UI
+            cartDisplay.innerText = cartCount;
+            if(grandTotalDisplay) grandTotalDisplay.innerText = `₦${totalPrice.toLocaleString()}`;
+            
+            // SHOW the bar and prep the form visibility
+            if (cartItems.length > 0) {
+                checkoutBar.classList.add('active');
+                // Ensure customerInfo is ready to be shown when checkout is clicked
+                customerInfo.style.display = "none"; 
+            }
 
-        updateCart();
-
-        showToast("Item added ✓");
-    };
-
-    // ===================== UPDATE CART =====================
-    function updateCart() {
-
-        cartCount = 0;
-        totalPrice = 0;
-
-        summaryList.innerHTML = "";
-
-        cartItems.forEach((item, index) => {
-
-            cartCount += item.qty;
-            totalPrice += item.price * item.qty;
-
-            summaryList.innerHTML += `
-                <div class="summary-item">
-                    <span>${item.name} (${item.color}, ${item.size})</span>
-
-                    <div>
-                        <button onclick="decrease(${index})">-</button>
-                        <span>${item.qty}</span>
-                        <button onclick="increase(${index})">+</button>
-                        <button onclick="removeItem(${index})">🗑</button>
-                    </div>
-
-                    <span>₦${item.price * item.qty}</span>
-                </div>
-            `;
+            // Feedback animation
+            button.innerText = "ADDED";
+            button.style.background = "#fff";
+            button.style.color = "#000";
+            setTimeout(() => { 
+                button.innerText = "ADD TO CART"; 
+                button.style.background = ""; 
+                button.style.color = "";
+            }, 1000);
         });
+    });
 
-        cartDisplay.innerText = cartCount;
-        grandTotal.innerText = `₦${totalPrice.toLocaleString()}`;
-
-        localStorage.setItem("nw_cart", JSON.stringify(cartItems));
-
-        summaryContainer.style.display = cartItems.length ? "block" : "none";
-    }
-
-    // ===================== CART CONTROLS =====================
-    window.increase = (i) => {
-        cartItems[i].qty++;
-        updateCart();
-    };
-
-    window.decrease = (i) => {
-        if (cartItems[i].qty > 1) {
-            cartItems[i].qty--;
-        } else {
-            cartItems.splice(i, 1);
-        }
-        updateCart();
-    };
-
-    window.removeItem = (i) => {
-        cartItems.splice(i, 1);
-        updateCart();
-    };
-
-    // ===================== PAYSTACK CHECKOUT =====================
-    checkoutBtn.addEventListener("click", () => {
-
-        const name = document.getElementById("customer-name").value;
-        const email = document.getElementById("email-address").value;
-        const phone = document.getElementById("phone-number").value;
-        const address = document.getElementById("delivery-address").value;
-
-        if (!name || !email || !phone || !address) {
-            alert("Please fill in all delivery details!");
+    // 3. PAYSTACK + WHATSAPP INTEGRATION
+    checkoutBtn.addEventListener('click', () => {
+        // Toggle form visibility on first click
+        if (customerInfo.style.display === "none" || customerInfo.style.display === "") {
+            customerInfo.style.display = "flex";
+            checkoutBtn.innerText = "CONFIRM & PAY";
             return;
         }
 
+        // Get delivery details from the form
+        const name = document.getElementById('customer-name').value;
+        const email = document.getElementById('email-address').value;
+        const phone = document.getElementById('phone-number').value;
+        const address = document.getElementById('delivery-address').value;
+
+        // Final Validation
+        if (!name || !email || !phone || !address) {
+            alert("Please fill in all delivery details before paying!");
+            return;
+        }
+
+        // Trigger Paystack Popup
         let handler = PaystackPop.setup({
-            key: "pk_live_98019618f5c7ca1a06b239a9dc75f41b71783ad7",
+            key: 'pk_live_98019618f5c7ca1a06b239a9dc75f41b71783ad7',
             email: email,
-            amount: totalPrice * 100,
-            currency: "NGN",
-            ref: "NW-" + Math.floor(Math.random() * 1000000000),
-
-            callback: function (response) {
-
+            amount: totalPrice * 100, // Paystack uses Kobo
+            currency: 'NGN',
+            ref: 'NW-' + Math.floor((Math.random() * 1000000000) + 1),
+            callback: function(response) {
+                // Success! Redirect to WhatsApp with receipt
                 const myNumber = "2348029913798";
-
+                
                 let itemDetails = "";
-
                 cartItems.forEach((item, index) => {
-                    itemDetails += `${index + 1}. ${item.name} (${item.color}, ${item.size}) x${item.qty} - ₦${item.price * item.qty}%0A`;
+                    itemDetails += `${index + 1}. ${item.name} (${item.color}, Size ${item.size}) - ${item.price}%0A`;
                 });
 
-                const message =
+                const fullMessage = 
                     `*NEW WAVE ORDER* ✅%0A` +
-                    `*PAID*%0A` +
-                    `Ref: ${response.reference}%0A%0A` +
-                    `Name: ${name}%0A` +
-                    `Phone: ${phone}%0A` +
-                    `Address: ${address}%0A%0A` +
-                    `ITEMS:%0A${itemDetails}%0A` +
-                    `TOTAL: ₦${totalPrice.toLocaleString()}`;
-
-                cartItems = [];
-                localStorage.removeItem("nw_cart");
-                updateCart();
-
-                window.location.href = `https://wa.me/${myNumber}?text=${message}`;
+                    `*Status:* PAID%0A` +
+                    `*Ref:* ${response.reference}%0A` +
+                    `--------------------------%0A` +
+                    `*CUSTOMER INFO*%0A` +
+                    `*Name:* ${name}%0A` +
+                    `*Phone:* ${phone}%0A` +
+                    `*Address:* ${address}%0A%0A` +
+                    `*ITEMS:*%0A${itemDetails}%0A` +
+                    `*TOTAL PAID:* ₦${totalPrice.toLocaleString()}%0A` +
+                    `--------------------------%0A` +
+                    `Please process for delivery! 🌊`;
+                
+                const whatsappUrl = `https://wa.me/${myNumber}?text=${fullMessage}`;
+                
+                // Using window.location.href to ensure redirect triggers on all mobile browsers
+                window.location.href = whatsappUrl;
             },
-
-            onClose: function () {
-                alert("Payment cancelled");
+            onClose: function() {
+                alert('Payment window closed. Your items are still in the cart.');
             }
         });
 
         handler.openIframe();
     });
+    // --- Start of Add-to-Cart Display Logic ---
+const summaryContainer = document.getElementById('cart-items-preview');
+const summaryList = document.getElementById('summary-list');
 
-    // INIT CART ON LOAD
-    updateCart();
+// Show the summary section
+summaryContainer.style.display = "block";
+
+
+
 });
