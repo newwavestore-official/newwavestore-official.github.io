@@ -96,7 +96,7 @@ body {
 }
 
 .nav-logo { height: 30px; width: auto; }
-.cart-count { font-size: 0.9rem; font-weight: bold; }
+
 
 .drop-title {
     font-size: 0.7rem; letter-spacing: 4px; opacity: 0.5;
@@ -195,3 +195,32 @@ body {
 .link-group h4 { font-size: 0.6rem; letter-spacing: 2px; margin-bottom: 10px; opacity: 0.4; }
 .link-group a { color: #fff; text-decoration: none; font-size: 0.75rem; display: block; margin-bottom: 20px; }
 .footer-bottom { border-top: 1px solid #1a1a1a; padding-top: 20px; text-align: center; opacity: 0.3; font-size: 0.5rem; }
+/* --- PROFESSIONAL CART ICON --- */
+.cart-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    position: relative;
+}
+
+.cart-icon {
+    width: 22px;
+    height: 22px;
+    color: #fff; /* Matches your brand colors */
+}
+
+.cart-count {
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    background: #fff; /* High contrast circle */
+    color: #000;
+    min-width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 2px;
+}
