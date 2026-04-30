@@ -1,3 +1,115 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Clean, modern font */
+}
+
+/* Splash Body - Centering everything */
+.splash-body {
+    background-color: #000; /* Deep black background */
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Container */
+.splash-container {
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Welcome Message */
+.welcome-msg {
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    line-height: 1.6;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+/* Main Logo Styling */
+.main-logo {
+    width: 250px; /* Adjust size based on your logo design */
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+    transition: transform 0.5s ease;
+}
+
+.main-logo:hover {
+    transform: scale(1.05); /* Subtle zoom on hover */
+}
+
+/* Shop Trigger Area */
+.shop-trigger-area {
+    margin-top: 1rem;
+}
+
+.drop-description {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    color: #888; /* Muted gray for secondary text */
+}
+
+/* Enter Button - The Call to Action */
+.enter-btn {
+    display: inline-block;
+    padding: 12px 40px;
+    border: 1px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.enter-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Splash Footer */
+.splash-footer {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+.splash-text {
+    font-size: 0.7rem;
+    color: #555;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.splash-text:hover {
+    color: #fff;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .main-logo {
+        width: 180px;
+    }
+    .welcome-msg {
+        font-size: 0.75rem;
+    }
+}
+
+
+
 /* --- GLOBAL RESET & BASE --- */
 * { 
     margin: 0; padding: 0; box-sizing: border-box; 
