@@ -1,139 +1,150 @@
-// NEW WAVE - Official Paystack + WhatsApp Checkout Script
-let cartCount = 0;
-let totalPrice = 0;
-let cartItems = [];
+let cart = JSON.parse(localStorage.getItem('newWaveCart')) || [];
 
 document.addEventListener('DOMContentLoaded', () => {
-    const cartDisplay = document.querySelector('.cart-count');
-    const grandTotalDisplay = document.getElementById('grand-total');
-    const checkoutBar = document.getElementById('checkout-bar');
-    const checkoutBtn = document.getElementById('main-checkout-btn');
-    const customerInfo = document.getElementById('customer-info');
-    const addButtons = document.querySelectorAll('.add-btn');
+    updateUI();
 
-    // 1. SELECTION LOGIC (SIZE & COLOR)
-    const optionButtons = document.querySelectorAll('.opt-btn');
-    optionButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Find the closest options container to isolate Size from Color
-            const group = this.closest('.options');
+    // 1. Selection Logic
+    document.querySelectorAll('.opt-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevents closing the card tap
+            const group = btn.closest('.options');
             group.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
+            btn.classList.add('active');
         });
     });
 
-    // 2. ADD TO CART LOGIC
-    addButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const productCard = button.closest('.product-card');
-            const productName = productCard.querySelector('h3').innerText;
-            const priceText = productCard.querySelector('.price').innerText;
-            const priceValue = parseInt(priceText.replace(/[^0-9]/g, ''));
+    // 2. Add to Cart Logic
+    document.querySelectorAll('.add-btn').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const card = button.closest('.product-card');
+            const name = card.querySelector('h3').innerText;
+            const price = parseInt(card.querySelector('.price').innerText.replace(/[^0-9]/g, ''));
+            const size = card.querySelector('.size-btn.active')?.dataset.size;
+            const color = card.querySelector('.color-btn.active')?.dataset.color;
 
-            const selectedSize = productCard.querySelector('.size-btn.active');
-            const selectedColor = productCard.querySelector('.color-btn.active');
-
-            // Validation: Must select both
-            if (!selectedSize || !selectedColor) {
-                alert("Please select both SIZE and COLOR first!");
+            if (!size || !color) {
+                alert("SELECT SIZE & COLOR");
                 return;
             }
 
-            const size = selectedSize.getAttribute('data-size');
-            const color = selectedColor.getAttribute('data-color');
+            const existing = cart.find(i => i.name === name && i.size === size && i.color === color);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ name, price, size, color, quantity: 1 });
+            }
 
-            // Update Cart Array
-            cartItems.push({
-                name: productName,
-                size: size,
-                color: color,
-                price: priceText
-            });
-
-            // Update UI & Math
-            cartCount++;
-            totalPrice += priceValue;
-
-            if (cartDisplay) cartDisplay.innerText = cartCount;
-            if (grandTotalDisplay) grandTotalDisplay.innerText = `₦${totalPrice.toLocaleString()}`;
-            
-            // Slide up the checkout bar
-            checkoutBar.classList.add('active');
-
-            // Visual Feedback
-            const originalText = button.innerText;
-            button.innerText = "ADDED";
-            button.style.background = "#fff";
-            button.style.color = "#000";
-            
-            setTimeout(() => { 
-                button.innerText = originalText; 
-                button.style.background = ""; 
-                button.style.color = "";
-            }, 1000);
+            saveAndRefresh();
+            toggleCart(true); // Open sidebar
         });
     });
 
-    // 3. PAYSTACK + WHATSAPP INTEGRATION
-    checkoutBtn.addEventListener('click', () => {
-        // Step A: Reveal Customer Form on first click
-        if (customerInfo.style.display === "none" || customerInfo.style.display === "") {
-            customerInfo.style.display = "flex";
-            checkoutBtn.innerText = "CONFIRM & PAY";
-            customerInfo.scrollIntoView({ behavior: 'smooth' });
+    // 3. Checkout Button Logic
+    document.getElementById('main-checkout-btn').addEventListener('click', () => {
+        const form = document.getElementById('customer-info');
+        if (form.style.display === "none") {
+            form.style.display = "flex";
+            document.getElementById('main-checkout-btn').innerText = "CONFIRM & PAY";
             return;
         }
 
-        // Step B: Get form values
         const name = document.getElementById('customer-name').value;
         const email = document.getElementById('email-address').value;
         const phone = document.getElementById('phone-number').value;
         const address = document.getElementById('delivery-address').value;
 
-        // Step C: Form Validation
         if (!name || !email || !phone || !address) {
-            alert("Please fill in all delivery details!");
+            alert("FILL ALL DETAILS");
             return;
         }
 
-        // Step D: Initialize Paystack
+        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        
         const handler = PaystackPop.setup({
-            key: 'pk_live_98019618f5c7ca1a06b239a9dc75f41b71783ad7',
+            key: 'pk_live_........',
             email: email,
-            amount: totalPrice * 100, // Amount in Kobo
+            amount: total * 100,
             currency: 'NGN',
-            ref: 'NW-' + Math.floor((Math.random() * 1000000000) + 1),
-            callback: function(response) {
-                // Success! Construct WhatsApp Message
-                const myNumber = "2348029913798";
-                
-                let itemDetails = "";
-                cartItems.forEach((item, index) => {
-                    itemDetails += `${index + 1}. ${item.name} (${item.color}, Size ${item.size}) - ${item.price}%0A`;
+            callback: function(res) {
+                let itemsStr = "";
+                cart.forEach(item => {
+                    itemsStr += `(${item.quantity}x) ${item.name} - ${item.size}/${item.color}%0A`;
                 });
 
-                const fullMessage = 
-                    `*NEW WAVE ORDER* ✅%0A` +
-                    `*Status:* PAID%0A` +
-                    `*Ref:* ${response.reference}%0A` +
-                    `--------------------------%0A` +
-                    `*CUSTOMER INFO*%0A` +
-                    `*Name:* ${name}%0A` +
-                    `*Phone:* ${phone}%0A` +
-                    `*Address:* ${address}%0A%0A` +
-                    `*ITEMS:*%0A${itemDetails}%0A` +
-                    `*TOTAL PAID:* ₦${totalPrice.toLocaleString()}%0A` +
-                    `--------------------------%0A` +
-                    `Please process for delivery! 🌊`;
-                
-                window.location.href = `https://wa.me/${myNumber}?text=${fullMessage}`;
-            },
-            onClose: function() {
-                alert('Payment cancelled. Your items are still saved in your cart.');
+                const msg = `*NEW WAVE ORDER*%0A*Status:* PAID%0A*Ref:* ${res.reference}%0A-----------------%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Address:* ${address}%0A%0A*ITEMS:*%0A${itemsStr}%0A*TOTAL:* ₦${total.toLocaleString()}`;
+                window.location.href = `https://wa.me/2348029913798?text=${msg}`;
             }
         });
-
-        // CRITICAL: This is the part that was missing to actually start the payment!
         handler.openIframe();
     });
 });
+
+function toggleControls(card) {
+    document.querySelectorAll('.product-card').forEach(c => { if(c !== card) c.classList.remove('active'); });
+    card.classList.toggle('active');
+}
+
+function toggleCart(forceOpen = false) {
+    const sidebar = document.getElementById('cart-sidebar');
+    const overlay = document.querySelector('.cart-overlay');
+    if(forceOpen) {
+        sidebar.classList.add('open');
+        overlay.style.display = 'block';
+    } else {
+        sidebar.classList.toggle('open');
+        overlay.style.display = sidebar.classList.contains('open') ? 'block' : 'none';
+    }
+}
+
+function updateQty(index, change) {
+    cart[index].quantity += change;
+    if (cart[index].quantity <= 0) cart.splice(index, 1);
+    saveAndRefresh();
+}
+
+function saveAndRefresh() {
+    localStorage.setItem('newWaveCart', JSON.stringify(cart));
+    updateUI();
+}
+
+function updateUI() {
+    const container = document.getElementById('cart-items-container');
+    const count = document.querySelector('.cart-count');
+    const sideTotal = document.getElementById('sidebar-total-price');
+    const stickyTotal = document.getElementById('grand-total');
+
+    container.innerHTML = "";
+    let total = 0;
+    let itemsTotal = 0;
+
+    cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        itemsTotal += item.quantity;
+        container.innerHTML += `
+            <div class="cart-item">
+                <div class="item-info">
+                    <h4>${item.name}</h4>
+                    <p>${item.size} / ${item.color}</p>
+                </div>
+                <div class="qty-ctrl">
+                    <button class="qty-btn" onclick="updateQty(${index}, -1)">-</button>
+                    <span class="qty-num">${item.quantity}</span>
+                    <button class="qty-btn" onclick="updateQty(${index}, 1)">+</button>
+                </div>
+            </div>`;
+    });
+
+    count.innerText = itemsTotal;
+    sideTotal.innerText = `₦${total.toLocaleString()}`;
+    stickyTotal.innerText = `₦${total.toLocaleString()}`;
+}
+
+function openCheckout() {
+    toggleCart();
+    document.getElementById('checkout-bar').classList.add('active');
+}
+
+function closeCheckout() {
+    document.getElementById('checkout-bar').classList.remove('active');
+}
