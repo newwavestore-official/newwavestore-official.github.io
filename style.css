@@ -1,3 +1,4 @@
+/* [KEEP YOUR ORIGINAL CSS ABOVE...] */
 /* General Reset */
 * {
     margin: 0;
@@ -292,3 +293,83 @@ body {
 }
 
 
+/* --- TAP TO REVEAL CONTROLS --- */
+.product-controls {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card.active .product-controls {
+    opacity: 1;
+    max-height: 300px;
+    margin-top: 15px;
+}
+
+/* --- SIDEBAR BAG & OVERLAY --- */
+.cart-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    z-index: 998;
+    display: none;
+}
+
+.cart-sidebar {
+    position: fixed;
+    top: 0; right: -100%;
+    width: 85%; max-width: 380px; height: 100%;
+    background: #000;
+    border-left: 1px solid #1a1a1a;
+    z-index: 999;
+    padding: 30px 20px;
+    display: flex; flex-direction: column;
+    transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cart-sidebar.open { right: 0; }
+
+.sidebar-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 40px;
+}
+
+.sidebar-header h3 { font-size: 0.7rem; letter-spacing: 4px; opacity: 0.6; }
+.close-btn { cursor: pointer; font-size: 1.2rem; }
+
+#cart-items-container { flex-grow: 1; overflow-y: auto; }
+
+.cart-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 0; border-bottom: 1px solid #111;
+}
+
+.item-info h4 { font-size: 0.8rem; margin-bottom: 4px; }
+.item-info p { font-size: 0.6rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 1px; }
+
+/* --- QUANTITY SELECTOR IN SIDEBAR --- */
+.qty-ctrl { display: flex; align-items: center; gap: 15px; }
+.qty-btn {
+    background: transparent; border: 1px solid #333; color: #fff;
+    width: 28px; height: 28px; cursor: pointer; font-weight: bold;
+}
+.qty-num { font-size: 0.8rem; font-weight: 900; min-width: 20px; text-align: center; }
+
+.sidebar-footer { border-top: 1px solid #1a1a1a; padding-top: 20px; }
+.sidebar-total {
+    display: flex; justify-content: space-between; 
+    margin-bottom: 20px; font-weight: 900; letter-spacing: 1px;
+}
+
+.checkout-trigger-btn {
+    width: 100%; background: #fff; color: #000; border: none;
+    padding: 18px; font-weight: 900; letter-spacing: 2px; cursor: pointer;
+}
+
+.checkout-actions { display: flex; gap: 10px; }
+.close-checkout-btn {
+    background: transparent; border: 1px solid #000; padding: 10px 20px;
+    font-weight: bold; cursor: pointer;
+}
