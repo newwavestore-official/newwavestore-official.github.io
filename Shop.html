@@ -10,6 +10,31 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="shop-body">
+    <!-- Add this to index.html -->
+<div id="product-modal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">✕</span>
+        <img id="modal-img" src="" alt="Product">
+        <h2 id="modal-name"></h2>
+        <p id="modal-price"></p>
+        
+        <div id="modal-options-container">
+            <!-- JS clones size/color buttons here -->
+        </div>
+
+        <div class="modal-qty-wrap">
+            <span class="label">QUANTITY</span>
+            <div class="qty-ctrl">
+                <button class="qty-btn" onclick="changeModalQty(-1)">-</button>
+                <span id="modal-qty-num" class="qty-num">1</span>
+                <button class="qty-btn" onclick="changeModalQty(1)">+</button>
+            </div>
+        </div>
+
+        <button class="confirm-add-btn" onclick="confirmAddToCart()">ADD TO BAG</button>
+    </div>
+</div>
+
 
     <!-- Dark Overlay for Sidebar -->
     <div class="cart-overlay" onclick="toggleCart()"></div>
