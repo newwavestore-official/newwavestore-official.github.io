@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
             totalPrice += priceValue;
 
             // Update UI
-            cartDisplay.innerText = `🛒[${cartCount}]`;
+            cartDisplay.innerText = cartCount;
             if(grandTotalDisplay) grandTotalDisplay.innerText = `₦${totalPrice.toLocaleString()}`;
             
             // SHOW the bar and prep the form visibility
