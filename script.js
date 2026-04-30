@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         
         const handler = PaystackPop.setup({
-            key: 'pk_live_........',
+            key: 'pk_live_98019618f5c7ca1a06b239a9dc75f41b71783ad7',
             email: email,
             amount: total * 100,
             currency: 'NGN',
