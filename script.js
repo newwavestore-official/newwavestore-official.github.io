@@ -1,4 +1,4 @@
-let cartItems = JSON.parse(localStorage.getItem("nw_cart")) || [];
+
 // NEW WAVE - Official Paystack + WhatsApp Checkout Script
 let cartCount = 0;
 let totalPrice = 0;
