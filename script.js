@@ -146,4 +146,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         handler.openIframe();
     });
+    // --- Start of Add-to-Cart Display Logic ---
+const summaryContainer = document.getElementById('cart-items-preview');
+const summaryList = document.getElementById('summary-list');
+
+// Show the summary section
+summaryContainer.style.display = "block";
+
+// Create and append the new item row
+const itemRow = document.createElement('div');
+itemRow.className = 'cart-item-row';
+itemRow.innerHTML = `
+    <div>
+        ${productName} 
+        <span class="cart-item-details">[${size} / ${color}]</span>
+    </div>
+    <div>${priceText}</div>
+`;
+
+summaryList.appendChild(itemRow);
+// --- End of Add-to-Cart Display Logic ---
+
 });
