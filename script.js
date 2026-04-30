@@ -1,7 +1,7 @@
 // NEW WAVE - Official Paystack + WhatsApp Checkout Script
 let cartCount = 0;
 let totalPrice = 0;
-let cartItems = []; 
+let cartItems = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     const cartDisplay = document.querySelector('.cart-count');
@@ -11,18 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const customerInfo = document.getElementById('customer-info');
     const addButtons = document.querySelectorAll('.add-btn');
 
-    // 1. SELECTION LOGIC (Works for both Size and Color)
-    const allOptionButtons = document.querySelectorAll('.opt-btn');
-    
-    allOptionButtons.forEach(btn => {
+    // 1. SELECTION LOGIC (SIZE & COLOR)
+    const optionButtons = document.querySelectorAll('.opt-btn');
+    optionButtons.forEach(btn => {
         btn.addEventListener('click', function() {
-            // Find the immediate container (the .options div)
-            const parent = this.parentElement;
-            
-            // Remove 'active' from all buttons in THIS specific group only
-            parent.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
-            
-            // Add 'active' to the clicked button
+            // Find the closest options container to isolate Size from Color
+            const group = this.closest('.options');
+            group.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
             this.classList.add('active');
         });
     });
@@ -33,24 +28,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const productCard = button.closest('.product-card');
             const productName = productCard.querySelector('h3').innerText;
             const priceText = productCard.querySelector('.price').innerText;
-            
-            // Convert price "₦22,000" to number 22000
             const priceValue = parseInt(priceText.replace(/[^0-9]/g, ''));
 
-            // Look for the active buttons within THIS specific product card
-            const selectedSizeBtn = productCard.querySelector('.size-btn.active');
-            const selectedColorBtn = productCard.querySelector('.color-btn.active');
+            const selectedSize = productCard.querySelector('.size-btn.active');
+            const selectedColor = productCard.querySelector('.color-btn.active');
 
-            // Validation: Stop if they haven't picked both
-            if (!selectedSizeBtn || !selectedColorBtn) {
+            // Validation: Must select both
+            if (!selectedSize || !selectedColor) {
                 alert("Please select both SIZE and COLOR first!");
                 return;
             }
 
-            const size = selectedSizeBtn.getAttribute('data-size');
-            const color = selectedColorBtn.getAttribute('data-color');
+            const size = selectedSize.getAttribute('data-size');
+            const color = selectedColor.getAttribute('data-color');
 
-            // Save the item
+            // Update Cart Array
             cartItems.push({
                 name: productName,
                 size: size,
@@ -58,18 +50,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 price: priceText
             });
 
-            // Update Math
+            // Update UI & Math
             cartCount++;
             totalPrice += priceValue;
 
-            // Update UI
-            if(cartDisplay) cartDisplay.innerText = cartCount;
-            if(grandTotalDisplay) grandTotalDisplay.innerText = `₦${totalPrice.toLocaleString()}`;
+            if (cartDisplay) cartDisplay.innerText = cartCount;
+            if (grandTotalDisplay) grandTotalDisplay.innerText = `₦${totalPrice.toLocaleString()}`;
             
-            // Show the checkout bar
-            if (checkoutBar) checkoutBar.classList.add('active');
+            // Slide up the checkout bar
+            checkoutBar.classList.add('active');
 
-            // Button Feedback
+            // Visual Feedback
             const originalText = button.innerText;
             button.innerText = "ADDED";
             button.style.background = "#fff";
@@ -85,34 +76,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. PAYSTACK + WHATSAPP INTEGRATION
     checkoutBtn.addEventListener('click', () => {
-        // Toggle form visibility on first click
+        // Step A: Reveal Customer Form on first click
         if (customerInfo.style.display === "none" || customerInfo.style.display === "") {
             customerInfo.style.display = "flex";
             checkoutBtn.innerText = "CONFIRM & PAY";
+            customerInfo.scrollIntoView({ behavior: 'smooth' });
             return;
         }
 
-        // Get delivery details from the form
+        // Step B: Get form values
         const name = document.getElementById('customer-name').value;
         const email = document.getElementById('email-address').value;
         const phone = document.getElementById('phone-number').value;
         const address = document.getElementById('delivery-address').value;
 
-        // Final Validation
+        // Step C: Form Validation
         if (!name || !email || !phone || !address) {
-            alert("Please fill in all delivery details before paying!");
+            alert("Please fill in all delivery details!");
             return;
         }
 
-        // Trigger Paystack Popup
-        let handler = PaystackPop.setup({
+        // Step D: Initialize Paystack
+        const handler = PaystackPop.setup({
             key: 'pk_live_98019618f5c7ca1a06b239a9dc75f41b71783ad7',
             email: email,
-            amount: totalPrice * 100, // Paystack uses Kobo
+            amount: totalPrice * 100, // Amount in Kobo
             currency: 'NGN',
             ref: 'NW-' + Math.floor((Math.random() * 1000000000) + 1),
             callback: function(response) {
-                // Success! Redirect to WhatsApp with receipt
+                // Success! Construct WhatsApp Message
                 const myNumber = "2348029913798";
                 
                 let itemDetails = "";
@@ -134,16 +126,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     `--------------------------%0A` +
                     `Please process for delivery! 🌊`;
                 
-                const whatsappUrl = `https://wa.me/${myNumber}?text=${fullMessage}`;
-                
-                // Using window.location.href to ensure redirect triggers on all mobile browsers
-                window.location.href = whatsappUrl;
+                window.location.href = `https://wa.me/${myNumber}?text=${fullMessage}`;
             },
             onClose: function() {
-                alert('Payment window closed. Your items are still in the cart.');
+                alert('Payment cancelled. Your items are still saved in your cart.');
             }
         });
 
+        // CRITICAL: This is the part that was missing to actually start the payment!
         handler.openIframe();
     });
-    
+});
