@@ -1,4 +1,3 @@
-
 // NEW WAVE - Official Paystack + WhatsApp Checkout Script
 let cartCount = 0;
 let totalPrice = 0;
@@ -12,21 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const customerInfo = document.getElementById('customer-info');
     const addButtons = document.querySelectorAll('.add-btn');
 
+    // 1. SELECTION LOGIC (Works for both Size and Color)
+    const allOptionButtons = document.querySelectorAll('.opt-btn');
     
-        // 1. SIZE & COLOR SELECTION LOGIC (Enhanced for the Ring Effect)
-    const optionButtons = document.querySelectorAll('.opt-btn');
-    optionButtons.forEach(btn => {
+    allOptionButtons.forEach(btn => {
         btn.addEventListener('click', function() {
+            // Find the immediate container (the .options div)
             const parent = this.parentElement;
-            // This removes 'active' from siblings but keeps '.black' or '.white'
-            parent.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
             
-            // Helpful for debugging - check your console to see if it's picking it up
-            console.log("Selected:", this.innerText || this.getAttribute('data-color'));
+            // Remove 'active' from all buttons in THIS specific group only
+            parent.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
+            
+            // Add 'active' to the clicked button
+            this.classList.add('active');
         });
     });
-
 
     // 2. ADD TO CART LOGIC
     addButtons.forEach(button => {
@@ -34,22 +33,24 @@ document.addEventListener('DOMContentLoaded', () => {
             const productCard = button.closest('.product-card');
             const productName = productCard.querySelector('h3').innerText;
             const priceText = productCard.querySelector('.price').innerText;
+            
+            // Convert price "₦22,000" to number 22000
             const priceValue = parseInt(priceText.replace(/[^0-9]/g, ''));
 
-            // Targeting specifically by your class names
-            const selectedSize = productCard.querySelector('.size-btn.active');
-            const selectedColor = productCard.querySelector('.color-btn.active');
+            // Look for the active buttons within THIS specific product card
+            const selectedSizeBtn = productCard.querySelector('.size-btn.active');
+            const selectedColorBtn = productCard.querySelector('.color-btn.active');
 
-            // Validation
-            if (!selectedSize || !selectedColor) {
+            // Validation: Stop if they haven't picked both
+            if (!selectedSizeBtn || !selectedColorBtn) {
                 alert("Please select both SIZE and COLOR first!");
                 return;
             }
 
-            const size = selectedSize.getAttribute('data-size');
-            const color = selectedColor.getAttribute('data-color');
+            const size = selectedSizeBtn.getAttribute('data-size');
+            const color = selectedColorBtn.getAttribute('data-color');
 
-            // Push item details
+            // Save the item
             cartItems.push({
                 name: productName,
                 size: size,
@@ -57,27 +58,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 price: priceText
             });
 
-            // Update Totals
+            // Update Math
             cartCount++;
             totalPrice += priceValue;
 
             // Update UI
-            cartDisplay.innerText = cartCount;
+            if(cartDisplay) cartDisplay.innerText = cartCount;
             if(grandTotalDisplay) grandTotalDisplay.innerText = `₦${totalPrice.toLocaleString()}`;
             
-            // SHOW the bar and prep the form visibility
-            if (cartItems.length > 0) {
-                checkoutBar.classList.add('active');
-                // Ensure customerInfo is ready to be shown when checkout is clicked
-                customerInfo.style.display = "none"; 
-            }
+            // Show the checkout bar
+            if (checkoutBar) checkoutBar.classList.add('active');
 
-            // Feedback animation
+            // Button Feedback
+            const originalText = button.innerText;
             button.innerText = "ADDED";
             button.style.background = "#fff";
             button.style.color = "#000";
+            
             setTimeout(() => { 
-                button.innerText = "ADD TO CART"; 
+                button.innerText = originalText; 
                 button.style.background = ""; 
                 button.style.color = "";
             }, 1000);
