@@ -153,6 +153,6 @@ const summaryList = document.getElementById('summary-list');
 // Show the summary section
 summaryContainer.style.display = "block";
 
-/
+
 
 });
