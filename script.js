@@ -147,13 +147,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
         handler.openIframe();
     });
-    // --- Start of Add-to-Cart Display Logic ---
-const summaryContainer = document.getElementById('cart-items-preview');
-const summaryList = document.getElementById('summary-list');
-
-// Show the summary section
-summaryContainer.style.display = "block";
-
-
-
-});
+    
