@@ -195,3 +195,28 @@ body {
 .link-group h4 { font-size: 0.6rem; letter-spacing: 2px; margin-bottom: 10px; opacity: 0.4; }
 .link-group a { color: #fff; text-decoration: none; font-size: 0.75rem; display: block; margin-bottom: 20px; }
 .footer-bottom { border-top: 1px solid #1a1a1a; padding-top: 20px; text-align: center; opacity: 0.3; font-size: 0.5rem; }
+#summary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cart-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.cart-item-details {
+    opacity: 0.5;
+    font-size: 0.6rem;
+    margin-left: 5px;
+}
+
+#summary-list::-webkit-scrollbar { width: 2px; }
+#summary-list::-webkit-scrollbar-thumb { background: #000; }
