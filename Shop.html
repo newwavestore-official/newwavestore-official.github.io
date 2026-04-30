@@ -2,51 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SHOP | NEW WAVE</title>
     <link rel="icon" type="image/png" href="Logo.png">
-<link rel="apple-touch-icon" href="Logo.png">
+    <link rel="apple-touch-icon" href="Logo.png">
+    <!-- Paystack SDK -->
     <script src="https://js.paystack.co/v1/inline.js"></script>
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="shop-body">
 
+    <!-- Premium Navigation -->
     <header class="shop-nav">
         <a href="index.html">
-            <img src="Logo.png" alt="New Wave Street wear official Logo" class="nav-logo">
+            <img src="Logo.png" alt="New Wave" class="nav-logo">
         </a>
         <div class="cart-trigger">
-    <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <path d="M16 10a4 4 0 0 1-8 0"></path>
-    </svg>
-    <span class="cart-count">0</span>
-</div>
-
+            <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="cart-count">0</span>
+        </div>
     </header>
 
     <main class="shop-content">
-        <h2 class="drop-title">COLLECTION 01</h2>
+        <h2 class="drop-title">COLLECTION 01 / DROP 01</h2>
         
         <div class="product-grid">
             
+            <!-- Product 1 -->
             <div class="product-card">
                 <div class="img-box"><img src="p1.jpg" alt="Item 1"></div>
                 <div class="product-info">
                     <h3>Classic Wave Tee</h3>
-                    <p class="price">₦100</p>
+                    <p class="price">₦25,000</p>
                     <div class="selection-container">
                         <div class="selection-group">
-                            <span class="label">SIZE:</span>
+                            <span class="label">SIZE</span>
                             <div class="options">
                                 <button class="opt-btn size-btn" data-size="L">L</button>
                                 <button class="opt-btn size-btn" data-size="XL">XL</button>
                             </div>
                         </div>
                         <div class="selection-group">
-                            <span class="label">COLOR:</span>
+                            <span class="label">COLOR</span>
                             <div class="options">
                                 <button class="opt-btn color-btn white" data-color="White"></button>
                                 <button class="opt-btn color-btn black" data-color="Black"></button>
@@ -57,21 +58,22 @@
                 </div>
             </div>
 
+            <!-- Product 2 -->
             <div class="product-card">
                 <div class="img-box"><img src="p2.jpg" alt="Item 2"></div>
                 <div class="product-info">
-                    <h3>Wave Hoodie</h3>
-                    <p class="price">₦50</p>
+                    <h3>Liquid Script Hoodie</h3>
+                    <p class="price">₦45,000</p>
                     <div class="selection-container">
                         <div class="selection-group">
-                            <span class="label">SIZE:</span>
+                            <span class="label">SIZE</span>
                             <div class="options">
                                 <button class="opt-btn size-btn" data-size="L">L</button>
                                 <button class="opt-btn size-btn" data-size="XL">XL</button>
                             </div>
                         </div>
                         <div class="selection-group">
-                            <span class="label">COLOR:</span>
+                            <span class="label">COLOR</span>
                             <div class="options">
                                 <button class="opt-btn color-btn white" data-color="White"></button>
                                 <button class="opt-btn color-btn black" data-color="Black"></button>
@@ -82,21 +84,22 @@
                 </div>
             </div>
 
+            <!-- Product 3 -->
             <div class="product-card">
                 <div class="img-box"><img src="p3.jpg" alt="Item 3"></div>
                 <div class="product-info">
-                    <h3>Wave Beanie</h3>
-                    <p class="price">₦8,000</p>
+                    <h3>Boxy Knit Jumper</h3>
+                    <p class="price">₦38,000</p>
                     <div class="selection-container">
                         <div class="selection-group">
-                            <span class="label">SIZE:</span>
+                            <span class="label">SIZE</span>
                             <div class="options">
                                 <button class="opt-btn size-btn" data-size="L">L</button>
                                 <button class="opt-btn size-btn" data-size="XL">XL</button>
                             </div>
                         </div>
                         <div class="selection-group">
-                            <span class="label">COLOR:</span>
+                            <span class="label">COLOR</span>
                             <div class="options">
                                 <button class="opt-btn color-btn white" data-color="White"></button>
                                 <button class="opt-btn color-btn black" data-color="Black"></button>
@@ -107,21 +110,22 @@
                 </div>
             </div>
 
+            <!-- Product 4 -->
             <div class="product-card">
                 <div class="img-box"><img src="p4.jpg" alt="Item 4"></div>
                 <div class="product-info">
                     <h3>Cargo Pants</h3>
-                    <p class="price">₦22,000</p>
+                    <p class="price">₦32,000</p>
                     <div class="selection-container">
                         <div class="selection-group">
-                            <span class="label">SIZE:</span>
+                            <span class="label">SIZE</span>
                             <div class="options">
                                 <button class="opt-btn size-btn" data-size="L">L</button>
                                 <button class="opt-btn size-btn" data-size="XL">XL</button>
                             </div>
                         </div>
                         <div class="selection-group">
-                            <span class="label">COLOR:</span>
+                            <span class="label">COLOR</span>
                             <div class="options">
                                 <button class="opt-btn color-btn white" data-color="White"></button>
                                 <button class="opt-btn color-btn black" data-color="Black"></button>
@@ -132,212 +136,62 @@
                 </div>
             </div>
 
-            <div class="product-card">
-                <div class="img-box"><img src="p5.jpg" alt="Item 5"></div>
-                <div class="product-info">
-                    <h3>Graphic Socks</h3>
-                    <p class="price">₦5,000</p>
-                    <div class="selection-container">
-                        <div class="selection-group">
-                            <span class="label">SIZE:</span>
-                            <div class="options">
-                                <button class="opt-btn size-btn" data-size="L">L</button>
-                                <button class="opt-btn size-btn" data-size="XL">XL</button>
-                            </div>
-                        </div>
-                        <div class="selection-group">
-                            <span class="label">COLOR:</span>
-                            <div class="options">
-                                <button class="opt-btn color-btn white" data-color="White"></button>
-                                <button class="opt-btn color-btn black" data-color="Black"></button>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="add-btn">ADD TO CART</button>
-                </div>
-            </div>
+        </div> 
+    </main>
 
-            <div class="product-card">
-                <div class="img-box"><img src="p6.jpg" alt="Item 6"></div>
-                <div class="product-info">
-                    <h3>Wave Tote Bag</h3>
-                    <p class="price">₦10,000</p>
-                    <div class="selection-container">
-                        <div class="selection-group">
-                            <span class="label">SIZE:</span>
-                            <div class="options">
-                                <button class="opt-btn size-btn" data-size="L">L</button>
-                                <button class="opt-btn size-btn" data-size="XL">XL</button>
-                            </div>
-                        </div>
-                        <div class="selection-group">
-                            <span class="label">COLOR:</span>
-                            <div class="options">
-                                <button class="opt-btn color-btn white" data-color="White"></button>
-                                <button class="opt-btn color-btn black" data-color="Black"></button>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="add-btn">ADD TO CART</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="img-box"><img src="p7.jpg" alt="Item 7"></div>
-                <div class="product-info">
-                    <h3>Distressed Cap</h3>
-                    <p class="price">₦12,000</p>
-                    <div class="selection-container">
-                        <div class="selection-group">
-                            <span class="label">SIZE:</span>
-                            <div class="options">
-                                <button class="opt-btn size-btn" data-size="L">L</button>
-                                <button class="opt-btn size-btn" data-size="XL">XL</button>
-                            </div>
-                        </div>
-                        <div class="selection-group">
-                            <span class="label">COLOR:</span>
-                            <div class="options">
-                                <button class="opt-btn color-btn white" data-color="White"></button>
-                                <button class="opt-btn color-btn black" data-color="Black"></button>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="add-btn">ADD TO CART</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="img-box"><img src="p8.jpg" alt="Item 8"></div>
-                <div class="product-info">
-                    <h3>Oversized Hoodie</h3>
-                    <p class="price">₦28,000</p>
-                    <div class="selection-container">
-                        <div class="selection-group">
-                            <span class="label">SIZE:</span>
-                            <div class="options">
-                                <button class="opt-btn size-btn" data-size="L">L</button>
-                                <button class="opt-btn size-btn" data-size="XL">XL</button>
-                            </div>
-                        </div>
-                        <div class="selection-group">
-                            <span class="label">COLOR:</span>
-                            <div class="options">
-                                <button class="opt-btn color-btn white" data-color="White"></button>
-                                <button class="opt-btn color-btn black" data-color="Black"></button>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="add-btn">ADD TO CART</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="img-box"><img src="p9.jpg" alt="Item 9"></div>
-                <div class="product-info">
-                    <h3>Boxy Fit Tee</h3>
-                    <p class="price">₦15,000</p>
-                    <div class="selection-container">
-                        <div class="selection-group">
-                            <span class="label">SIZE:</span>
-                            <div class="options">
-                                <button class="opt-btn size-btn" data-size="L">L</button>
-                                <button class="opt-btn size-btn" data-size="XL">XL</button>
-                            </div>
-                        </div>
-                        <div class="selection-group">
-                            <span class="label">COLOR:</span>
-                            <div class="options">
-                                <button class="opt-btn color-btn white" data-color="White"></button>
-                                <button class="opt-btn color-btn black" data-color="Black"></button>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="add-btn">ADD TO CART</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="img-box"><img src="p10.jpg" alt="Item 10"></div>
-                <div class="product-info">
-                    <h3>Work Jacket</h3>
-                    <p class="price">₦45,000</p>
-                    <div class="selection-container">
-                        <div class="selection-group">
-                            <span class="label">SIZE:</span>
-                            <div class="options">
-                                <button class="opt-btn size-btn" data-size="L">L</button>
-                                <button class="opt-btn size-btn" data-size="XL">XL</button>
-                            </div>
-                        </div>
-                        <div class="selection-group">
-                            <span class="label">COLOR:</span>
-                            <div class="options">
-                                <button class="opt-btn color-btn white" data-color="White"></button>
-                                <button class="opt-btn color-btn black" data-color="Black"></button>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="add-btn">ADD TO CART</button>
-                </div>
-            </div>
-
-        </div> </main>
-
-    
+    <!-- Sticky Checkout Section -->
     <div class="sticky-checkout" id="checkout-bar">
-    <div id="checkout-container">
-        
-
-</div>
-
-        <div id="customer-info" style="display: none;">
+        <div id="customer-info">
             <h4 class="form-title">DELIVERY DETAILS</h4>
             <input type="text" id="customer-name" placeholder="Full Name" required>
             <input type="email" id="email-address" placeholder="Email Address" required>
             <input type="tel" id="phone-number" placeholder="Phone Number" required>
-            <textarea id="delivery-address" placeholder="Delivery Address (House No, Street, State)" required></textarea>
+            <textarea id="delivery-address" placeholder="Complete Delivery Address" required></textarea>
         </div>
-
+        
         <div class="checkout-footer">
             <div class="total-info">
-                <span class="total-label">TOTAL:</span>
+                <span class="total-label">ORDER TOTAL:</span>
                 <span class="total-price" id="grand-total">₦0</span>
             </div>
             <button class="checkout-btn" id="main-checkout-btn">CHECKOUT</button>
         </div>
     </div>
-</div>
 
-<footer class="site-footer">
-    <div class="footer-content">
-        <div class="footer-section brand-info">
-            <h3 class="footer-logo">NEW WAVE STORE</h3>
-            <p>NEW WAVE STORE is an online clothing store specializing in graphic streetwear and unique essentials. We provide high-quality designs with a focus on modern style and comfort.</p>
-        </div>
-
-        <div class="footer-links">
-            <div class="link-group">
-                <h4>CONTACT</h4>
-                <a href="mailto:newwavestore.official@gmail.com">newwavestore.official@gmail.com</a>
+        <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h4 class="footer-label">ABOUT</h4>
+                <p>NEW WAVE is a Lagos-based streetwear brand blending Y2K aesthetics with modern utility. High-quality drops, designed for the future.</p>
             </div>
-            
-            <div class="link-group">
-                <h4>FOLLOW</h4>
-                <a href="https://www.tiktok.com/@yourusername" target="_blank" class="tiktok-icon" aria-label="TikTok">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47-.26-.18-.48-.39-.7-.6-.05 2.42-.03 4.84-.04 7.26-.03 2.13-.54 4.41-2.13 5.92-1.55 1.57-3.95 2.1-6.1 1.74-2.12-.34-4.1-1.85-4.88-3.87-1-2.58-.23-5.75 1.94-7.46 1.11-.87 2.51-1.33 3.93-1.31v4.11c-.88-.04-1.8.2-2.5.76-.8.63-1.07 1.73-.83 2.68.21.96 1.08 1.74 2.06 1.87 1.01.12 2.09-.28 2.63-1.16.42-.64.49-1.44.47-2.19-.01-3.69-.01-7.38-.01-11.07Z"/>
-                   
-                    </svg>
+
+            <div class="footer-socials">
+                <!-- TikTok -->
+                <a href="https://tiktok.com/@yourusername" class="social-link" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.06 3.42-.01 6.83-.02 10.25-.14 3.55-3.39 6.74-7.14 6.74-3.54-.05-6.67-2.76-7.07-6.25-.47-4.12 2.97-7.96 7.01-7.73.1 1.27.07 2.53.01 3.81-2.02-.12-4.04 1.17-4.51 3.1-.74 3.02 1.94 5.76 4.77 5.27 2.27-.4 3.82-2.53 3.74-4.82-.01-4.41-.01-8.82-.01-13.23-.05-.12-.11-.24-.17-.36z"/></svg>
+                </a>
+                <!-- Instagram -->
+                <a href="https://instagram.com/yourusername" class="social-link" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <!-- Facebook -->
+                <a href="https://facebook.com/yourusername" class="social-link" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                 </a>
             </div>
         </div>
-    </div>
-<script src="script.js"></script>
-    <div class="footer-bottom">
-        <p>&copy; 2026 NEW WAVE. ALL RIGHTS RESERVED.</p>
-    </div>
-</footer>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 NEW WAVE. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
 
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+    <script src="script.js"></script>
 </body>
 </html>
