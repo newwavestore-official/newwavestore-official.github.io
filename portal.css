@@ -49,9 +49,9 @@ body {
 .enter-btn {
     width: 100%;
     padding: 18px;
-    border: 1px solid #333;
+    border: 1px solid #ffffff;
     background: transparent;
-    color: #333;
+    color: #ffffff;
     font-size: 0.8rem;
     font-weight: 900;
     letter-spacing: 3px;
@@ -79,7 +79,7 @@ body {
 .lock-icon {
     width: 16px;
     height: 16px;
-    stroke: #333;
+    stroke: #ffffff;
     transition: stroke 0.4s ease;
 }
 
@@ -89,7 +89,7 @@ body {
 
 .notify-section {
     width: 100%;
-    border-top: 1px solid #111;
+    border-top: 1px solid white;
     padding-top: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -99,7 +99,7 @@ body {
 .notify-label {
     font-size: 0.65rem;
     letter-spacing: 2px;
-    color: #555;
+    color: #ffffff;
     text-transform: uppercase;
 }
 
@@ -113,9 +113,9 @@ body {
 .notify-form input {
     width: 100%;
     padding: 14px;
-    background: #111;
-    border: 1px solid #222;
-    color: #fff;
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    color: #ffffff;
     font-size: 0.8rem;
     outline: none;
     font-family: inherit;
@@ -123,12 +123,12 @@ body {
 }
 
 .notify-form input::placeholder {
-    color: #444;
+    color: #ffffff;
     letter-spacing: 1px;
 }
 
 .notify-form input:focus {
-    border-color: #fff;
+    border-color: #ffffff;
 }
 
 .notify-form button {
