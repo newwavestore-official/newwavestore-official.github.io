@@ -295,6 +295,18 @@ body { background: #000; color: #fff; font-family: Helvetica, Arial, sans-serif;
     padding: 20px; font-weight: 900; letter-spacing: 3px; 
     text-transform: uppercase; cursor: pointer;
 }
+/* Adding a dark grey hover effect */
+#main-checkout-btn:hover {
+    background-color: #333 !important; /* Dark grey for a subtle shift */
+    transition: 0.3s ease;
+}
+
+/* Tactile feedback when the button is pressed */
+#main-checkout-btn:active {
+    background-color: #555 !important; /* Slightly lighter grey on click */
+    transform: scale(0.98); /* Subtle "press" effect for mobile */
+}
+
 /* Container for the sidebar footer */
 .sidebar-footer {
     padding: 20px;
