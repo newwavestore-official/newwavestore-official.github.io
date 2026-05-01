@@ -1,4 +1,4 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzfG1pwaujELd7XeiTLpqAWW_whcPFx6YdyTYZBngn10u4AnVtRwpCnwCwbbRz1toWkgw/exec';
+const scriptURL ='https://script.google.com/macros/s/AKfycbwsoYQs5tgm2m6_dbN5pQqZ6aDZzfLMdAZlf2czfzJQZT_kM-jfepZRkRTCtCW7l6c1/exec ';
 const dropDate = new Date("2026-07-01T00:00:00").getTime();
 
 const interval = setInterval(function () {
