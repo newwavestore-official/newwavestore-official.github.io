@@ -252,30 +252,46 @@ body { background: #000; color: #fff; font-family: Helvetica, Arial, sans-serif;
 .cart-item { display: flex; align-items: center; padding: 15px 0; border-bottom: 1px solid #111; }
 
 /* Styling the "CONFIRM & PAY" button specifically */
-#main-checkout-btn {
-    width: 100% !important; /* Makes it full width like the image */
-    background-color: #000 !important; /* Solid black background */
-    color: #fff !important; /* White text */
-    padding: 20px !important; /* Makes the button tall and easy to tap */
-    font-size: 16px !important;
-    font-weight: 900 !important; /* Heavy bold for the streetwear look */
-    text-transform: uppercase; /* All caps */
-    letter-spacing: 2px; /* Spacing between letters for style */
-    border: none !important; /* Removes the default grey border */
-    border-radius: 0 !important; /* Sharp corners */
-    cursor: pointer;
-    display: block;
-    margin-top: 15px;
+/* --- STICKY CHECKOUT BAR --- */
+.sticky-checkout {
+    position: fixed; bottom: -100%; left: 0; width: 100%;
+    background: #fff; color: #000; padding: 20px; z-index: 1000;
+    transition: bottom 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
 }
 
-/* Adjusting the "BACK" button so it doesn't look like the main action */
-.close-checkout-btn {
-    background: transparent !important;
-    color: #888 !important;
-    border: none !important;
-    text-decoration: underline; /* Makes it look like a secondary link */
-    font-size: 12px;
-    padding: 10px;
-    width: 100%;
-    text-align: center;
+.sticky-checkout.active { bottom: 0; }
+
+/* --- CUSTOMER FORM --- */
+#customer-info { 
+    display: none; /* Controlled by JS */
+    flex-direction: column; 
+    margin-bottom: 20px; 
+}
+
+.form-title { font-size: 0.7rem; letter-spacing: 3px; margin-bottom: 12px; font-weight: 900; }
+
+#customer-info input, #customer-info textarea {
+    background: #f9f9f9; color: #000; border: 1px solid #ddd;
+    padding: 14px; font-size: 0.85rem; border-radius: 0;
+    width: 100%; outline: none; margin-bottom: -1px; /* Stacks them perfectly */
+    font-family: inherit;
+}
+
+#customer-info input:focus, #customer-info textarea:focus {
+    background: #fff; border-color: #000; z-index: 2; position: relative;
+}
+
+#customer-info textarea { height: 70px; resize: none; border-bottom: 1px solid #ddd; }
+
+/* --- CHECKOUT FOOTER --- */
+.checkout-footer { display: flex; flex-direction: column; gap: 15px; }
+.total-info { display: flex; justify-content: space-between; align-items: center; }
+.total-label { font-size: 0.6rem; letter-spacing: 2px; font-weight: bold; }
+.total-price { font-size: 1.1rem; font-weight: 900; }
+
+#main-checkout-btn {
+    width: 100%; background: #000; color: #fff; border: none;
+    padding: 20px; font-weight: 900; letter-spacing: 3px; 
+    text-transform: uppercase; cursor: pointer;
 }
