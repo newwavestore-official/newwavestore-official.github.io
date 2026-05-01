@@ -1,7 +1,6 @@
 const scriptURL = 'https://script.google.com/macros/s/AKfycbzfG1pwaujELd7XeiTLpqAWW_whcPFx6YdyTYZBngn10u4AnVtRwpCnwCwbbRz1toWkgw/exec';
-const dropDate = new Date("July 1, 2026 00:00:00").getTime();
+const dropDate = new Date("2026-07-01T00:00:00").getTime();
 
-// Countdown
 const interval = setInterval(function () {
     const now = new Date().getTime();
     const distance = dropDate - now;
@@ -24,7 +23,6 @@ const interval = setInterval(function () {
     document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
 }, 1000);
 
-// Unlock shop when countdown hits zero
 function unlockShop() {
     const btn = document.getElementById('enter-btn');
     btn.classList.remove('locked');
@@ -35,7 +33,6 @@ function unlockShop() {
     };
 }
 
-// Email submission
 function submitEmail() {
     const email = document.getElementById('email-input').value.trim();
     const msg = document.getElementById('notify-msg');
@@ -51,16 +48,15 @@ function submitEmail() {
     btn.disabled = true;
 
     fetch(scriptURL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'email=' + encodeURIComponent(email)
-})
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'email=' + encodeURIComponent(email)
     }).then(() => {
         msg.style.color = '#fff';
-msg.style.letterSpacing = '2px';
-msg.style.fontWeight = '900';
-msg.innerText = "YOU'RE ON THE LIST!";
+        msg.style.letterSpacing = '2px';
+        msg.style.fontWeight = '900';
+        msg.innerText = "YOU'RE ON THE LIST!";
         document.getElementById('email-input').value = '';
         btn.innerText = 'NOTIFY ME';
         btn.disabled = false;
