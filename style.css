@@ -1,114 +1,148 @@
-/* [KEEP YOUR ORIGINAL CSS ABOVE...] */
-/* General Reset */
+/*Splash page */
+/* Reset & Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Clean, modern font */
+    font-family: 'Helvetica', 'Arial', sans-serif; /* Use your brand font here */
 }
 
-/* Splash Body - Centering everything */
-.splash-body {
-    background-color: #000; /* Deep black background */
+body {
+    background-color: #000;
     color: #fff;
+    overflow: hidden; /* Prevents double scrollbars */
+}
+
+/* 1. FIXED BACKGROUND BLUR */
+.background-blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* INPUT YOUR IMAGE PATH HERE */
+    background: url('background-model.jpg') no-repeat center center/cover;
+    filter: blur(25px) brightness(0.3); /* Moody, premium depth */
+    z-index: -1;
+    transform: scale(1.1); /* Prevents white edges from blur */
+}
+
+/* 2. THE LOCK SCROLL CONTAINER */
+.snap-container {
     height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory; /* The cinematic lock */
+    scrollbar-width: none; /* Firefox */
+}
+
+.snap-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+/* 3. FULL SCREEN SECTIONS */
+.snap-section {
+    height: 100vh;
+    width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    text-align: center;
+    scroll-snap-align: start;
+    position: relative;
+    padding: 20px;
 }
 
-/* Container */
-.splash-container {
-    text-align: center;
-    width: 90%;
-    max-width: 600px;
+/* 4. BRANDING & TAGLINE */
+.welcome-msg {
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+    line-height: 1.8;
+    margin-bottom: 4rem;
+    opacity: 0.9;
+}
+
+.brand-hero {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    margin-bottom: 4rem;
 }
 
-/* Welcome Message */
-.welcome-msg {
-    font-size: 0.9rem;
-    letter-spacing: 3px;
-    line-height: 1.6;
-    text-transform: uppercase;
-    font-weight: 300;
-}
-
-/* Main Logo Styling */
 .main-logo {
-    width: 250px; /* Adjust size based on your logo design */
+    max-width: 280px;
     height: auto;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
-    transition: transform 0.5s ease;
 }
 
-.main-logo:hover {
-    transform: scale(1.05); /* Subtle zoom on hover */
+.brand-tagline {
+    font-size: 0.6rem;
+    letter-spacing: 8px; /* Spaced out 'zttw' look */
+    text-transform: uppercase;
+    margin-top: 1.5rem;
+    color: #fff;
+    opacity: 0.8;
 }
 
-/* Shop Trigger Area */
-.shop-trigger-area {
-    margin-top: 1rem;
-}
-
+/* 5. BUTTON AREA */
 .drop-description {
-    font-size: 0.8rem;
-    letter-spacing: 2px;
+    font-size: 0.55rem;
+    letter-spacing: 3px;
+    color: #444;
     margin-bottom: 1.5rem;
-    color: #888; /* Muted gray for secondary text */
 }
 
-/* Enter Button - The Call to Action */
 .enter-btn {
     display: inline-block;
     padding: 12px 40px;
     border: 1px solid #fff;
     color: #fff;
     text-decoration: none;
-    font-weight: bold;
-    letter-spacing: 2px;
-    transition: all 0.3s ease;
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    transition: 0.4s ease;
 }
 
 .enter-btn:hover {
-    background-color: #fff;
+    background: #fff;
     color: #000;
 }
 
-/* Splash Footer */
-.splash-footer {
-    position: absolute;
-    bottom: 30px;
+/* 6. PROFESSIONAL MODEL GALLERY */
+.model-frame {
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+}
+
+.model-img {
     width: 100%;
-    text-align: center;
+    height: auto;
+    max-height: 75vh;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle frame */
+}
+.brand-contact {
+    font-size: 0.5rem;
+    letter-spacing: 3px;
+    color: #666; /* Muted color so it stays low-key */
+    margin-top: 2rem;
+    text-transform: uppercase;
+    transition: 0.3s;
 }
 
-.splash-text {
-    font-size: 0.7rem;
-    color: #555;
-    text-decoration: none;
-    letter-spacing: 1px;
-    transition: color 0.3s;
+.brand-contact:hover {
+    color: #fff; /* Lights up when they hover */
 }
 
-.splash-text:hover {
-    color: #fff;
-}
 
-/* Mobile Responsiveness */
-@media (max-width: 600px) {
-    .main-logo {
-        width: 180px;
-    }
-    .welcome-msg {
-        font-size: 0.75rem;
-    }
-}
 
+
+
+
+
+
+/*SHOP CODES*/
 /* --- BASE --- */
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 body { background: #000; color: #fff; font-family: Helvetica, Arial, sans-serif; padding-bottom: 50px; }
