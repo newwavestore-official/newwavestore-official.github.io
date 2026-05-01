@@ -156,7 +156,7 @@ document.querySelector('.enter-btn').addEventListener('click', function(e) {
 
     // Then redirect
     setTimeout(() => {
-        window.location.href = 'portal.html';
+        window.location.href = 'Shop.html';
     }, 1400);
 });
 </script>
