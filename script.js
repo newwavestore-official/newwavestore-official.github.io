@@ -1,3 +1,4 @@
+
 let cart = JSON.parse(localStorage.getItem('newWaveCart')) || [];
 let currentProduct = null;
 
@@ -23,12 +24,18 @@ document.addEventListener('DOMContentLoaded', () => {
             amount: total * 100,
             currency: 'NGN',
             callback: function(res) {
-                let itemsStr = "";
-                cart.forEach(item => { itemsStr += `(${item.quantity}x) ${item.name} - ${item.size}/${item.color}%0A`; });
-                const msg = `*NEW WAVE ORDER*%0A*Status:* PAID%0A*Ref:* ${res.reference}%0A-----------------%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Address:* ${address}%0A%0A*ITEMS:*%0A${itemsStr}%0A*TOTAL:* ₦${total.toLocaleString()}`;
+                const orderData = {
+                    reference: res.reference,
+                    name: name,
+                    phone: phone,
+                    address: address,
+                    items: cart,
+                    total: total
+                };
+                localStorage.setItem('nwOrder', JSON.stringify(orderData));
                 cart = [];
                 saveAndRefresh();
-                window.location.href = `https://wa.me/2348029913798?text=${msg}`;
+                window.location.href = 'confirm.html';
             }
         });
         handler.openIframe();
@@ -76,7 +83,7 @@ function confirmAddToCart() {
     if (!size || !color) { alert("SELECT SIZE & COLOR"); return; }
     const price = parseInt(currentProduct.priceText.replace(/[^0-9]/g, ''));
     const existing = cart.find(i => i.name === currentProduct.name && i.size === size && i.color === color);
-    if (existing) { existing.quantity += qty; } 
+    if (existing) { existing.quantity += qty; }
     else { cart.push({ name: currentProduct.name, price, size, color, img: currentProduct.img, quantity: qty }); }
     saveAndRefresh();
     closeModal();
@@ -88,7 +95,7 @@ function toggleControls(card) { openProductModal(card); }
 function toggleCart(forceOpen = false) {
     const sidebar = document.getElementById('cart-sidebar');
     const overlay = document.querySelector('.cart-overlay');
-    if(forceOpen) { sidebar.classList.add('open'); overlay.style.display = 'block'; } 
+    if(forceOpen) { sidebar.classList.add('open'); overlay.style.display = 'block'; }
     else { sidebar.classList.toggle('open'); overlay.style.display = sidebar.classList.contains('open') ? 'block' : 'none'; }
 }
 
@@ -119,6 +126,7 @@ function updateUI() {
 
 function openCheckout() { if (cart.length === 0) return; toggleCart(); document.getElementById('checkout-bar').classList.add('active'); }
 function closeCheckout() { document.getElementById('checkout-bar').classList.remove('active'); }
+
 function toggleMenu() {
     const sidebar = document.getElementById('nav-sidebar');
     const overlay = document.querySelector('.nav-overlay');
