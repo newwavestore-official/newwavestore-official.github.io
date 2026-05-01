@@ -251,3 +251,31 @@ body { background: #000; color: #fff; font-family: Helvetica, Arial, sans-serif;
 .cart-thumb { width: 50px; height: 50px; object-fit: cover; margin-right: 15px; }
 .cart-item { display: flex; align-items: center; padding: 15px 0; border-bottom: 1px solid #111; }
 
+/* Styling the "CONFIRM & PAY" button specifically */
+#main-checkout-btn {
+    width: 100% !important; /* Makes it full width like the image */
+    background-color: #000 !important; /* Solid black background */
+    color: #fff !important; /* White text */
+    padding: 20px !important; /* Makes the button tall and easy to tap */
+    font-size: 16px !important;
+    font-weight: 900 !important; /* Heavy bold for the streetwear look */
+    text-transform: uppercase; /* All caps */
+    letter-spacing: 2px; /* Spacing between letters for style */
+    border: none !important; /* Removes the default grey border */
+    border-radius: 0 !important; /* Sharp corners */
+    cursor: pointer;
+    display: block;
+    margin-top: 15px;
+}
+
+/* Adjusting the "BACK" button so it doesn't look like the main action */
+.close-checkout-btn {
+    background: transparent !important;
+    color: #888 !important;
+    border: none !important;
+    text-decoration: underline; /* Makes it look like a secondary link */
+    font-size: 12px;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+}
