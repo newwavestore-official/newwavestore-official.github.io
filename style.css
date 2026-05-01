@@ -295,3 +295,41 @@ body { background: #000; color: #fff; font-family: Helvetica, Arial, sans-serif;
     padding: 20px; font-weight: 900; letter-spacing: 3px; 
     text-transform: uppercase; cursor: pointer;
 }
+/* Container for the sidebar footer */
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid #333; /* Dark divider line */
+    background: #000;
+}
+
+/* Designing the Total line to match the image 1000037867.jpg */
+.sidebar-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #fff;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+/* The "PROCEED TO CHECKOUT" button styling */
+.checkout-trigger-btn {
+    width: 100%;
+    background-color: #fff !important; /* White button on black sidebar */
+    color: #000 !important;
+    padding: 18px;
+    font-weight: 900;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: 0.2s ease;
+}
+
+.checkout-trigger-btn:active {
+    background-color: #ccc;
+    transform: scale(0.98);
+}
