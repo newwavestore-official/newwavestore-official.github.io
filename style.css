@@ -131,7 +131,17 @@ background-blur {
 body { background: #000; color: #fff; font-family: Helvetica, Arial, sans-serif; padding-bottom: 50px; }
 
 /* --- NAV --- */
-.shop-nav { display: flex; justify-content: space-between; padding: 20px; position: sticky; top: 0; background: rgba(0,0,0,0.9); z-index: 100; border-bottom: 1px solid #111; }
+.shop-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 100;
+    border-bottom: 1px solid #111;
+}
 .nav-logo { height: 40px; }
 .cart-trigger { display: flex; align-items: center; gap: 8px; cursor: pointer; }
 .cart-icon { width: 22px; stroke: #fff; }
@@ -443,10 +453,17 @@ body { background: #000; color: #fff; font-family: Helvetica, Arial, sans-serif;
     opacity: 1;
 }
 
-.nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    padding: 15px 0;
+    border-bottom: 1px solid #111;
+    transition: opacity 0.2s ease;
+    display: block;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 .nav-link {
@@ -463,4 +480,9 @@ body { background: #000; color: #fff; font-family: Helvetica, Arial, sans-serif;
 
 .nav-link:hover {
     opacity: 0.5;
+}
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
