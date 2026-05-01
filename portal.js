@@ -55,8 +55,10 @@ function submitEmail() {
         mode: 'no-cors',
         body: JSON.stringify({ email: email })
     }).then(() => {
-        msg.style.color = '#888';
-        msg.innerText = 'YOU\'RE ON THE LIST.';
+        msg.style.color = '#fff';
+msg.style.letterSpacing = '2px';
+msg.style.fontWeight = '900';
+msg.innerText = "YOU'RE ON THE LIST!";
         document.getElementById('email-input').value = '';
         btn.innerText = 'NOTIFY ME';
         btn.disabled = false;
