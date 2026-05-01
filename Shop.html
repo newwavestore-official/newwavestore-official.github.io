@@ -53,12 +53,8 @@
 
     <header class="shop-nav">
         <a href="index.html"><img src="Logo.png" alt="New Wave" class="nav-logo"></a>
-        <!-- Hamburger Button -->
-<div class="hamburger" onclick="toggleMenu()" id="hamburger-btn">
-    <span></span>
-    <span></span>
-    <span></span>
-</div>
+        
+
 
 <!-- Nav Menu Sidebar -->
 <div class="nav-overlay" onclick="toggleMenu()"></div>
@@ -72,6 +68,7 @@
         <a href="#" class="nav-link" onclick="scrollToFooter()">CONTACT</a>
     </nav>
 </div>
+        <div class="nav-right">
         <div class="cart-trigger" onclick="toggleCart()">
             <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
@@ -79,6 +76,12 @@
                 <path d="M16 10a4 4 0 0 1-8 0"></path>
             </svg>
             <span class="cart-count">0</span>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()" id="hamburger-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+        </div>
         </div>
     </header>
 
