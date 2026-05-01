@@ -1,21 +1,13 @@
-/*Splash page */
-/* Reset & Base Styles */
+/*Splash*/
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Helvetica', 'Arial', sans-serif; /* Use your brand font here */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Clean, modern font */
 }
-
-body {
-    background-color: #000;
-    color: #fff;
-    overflow: hidden; /* Prevents double scrollbars */
-}
-
-/* 1. FIXED BACKGROUND BLUR */
-.background-blur {
-    position: fixed;
+background-blur {
+        position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -27,223 +19,108 @@ body {
     transform: scale(1.1); /* Prevents white edges from blur */
 }
 
-/* 2. THE LOCK SCROLL CONTAINER */
-.snap-container {
+/* Splash Body - Centering everything */
+.splash-body {
+    background-color: #000; /* Deep black background */
+    color: #fff;
     height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory; /* The cinematic lock */
-    scrollbar-width: none; /* Firefox */
-}
-
-.snap-container::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
-}
-
-/* 3. FULL SCREEN SECTIONS */
-.snap-section {
-    height: 100vh;
-    width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+}
+
+/* Container */
+.splash-container {
     text-align: center;
-    scroll-snap-align: start;
-    position: relative;
-    padding: 20px;
-}
-
-/* 4. BRANDING & TAGLINE */
-.welcome-msg {
-    font-size: 0.8rem;
-    letter-spacing: 5px;
-    line-height: 1.8;
-    margin-bottom: 4rem;
-    opacity: 0.9;
-}
-
-.brand-hero {
+    width: 90%;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 4rem;
+    gap: 2rem;
 }
 
-.main-logo {
-    max-width: 280px;
-    height: auto;
-}
-
-.brand-tagline {
-    font-size: 0.7rem;
-    letter-spacing: 8px; /* Spaced out 'zttw' look */
-    text-transform: uppercase;
-    margin-top: 1.5rem;
-    color: #fff;
-    opacity: 0.8;
-}
-
-/* 5. BUTTON AREA */
-.drop-description {
-    font-size: 0.55rem;
+/* Welcome Message */
+.welcome-msg {
+    font-size: 0.9rem;
     letter-spacing: 3px;
-    color: #444;
-    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    text-transform: uppercase;
+    font-weight: 300;
 }
 
+/* Main Logo Styling */
+.main-logo {
+    width: 250px; /* Adjust size based on your logo design */
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+    transition: transform 0.5s ease;
+}
+
+.main-logo:hover {
+    transform: scale(1.05); /* Subtle zoom on hover */
+}
+
+/* Shop Trigger Area */
+.shop-trigger-area {
+    margin-top: 1rem;
+}
+
+.drop-description {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    color: #888; /* Muted gray for secondary text */
+}
+
+/* Enter Button - The Call to Action */
 .enter-btn {
     display: inline-block;
     padding: 12px 40px;
     border: 1px solid #fff;
     color: #fff;
     text-decoration: none;
-    font-size: 0.7rem;
-    letter-spacing: 4px;
-    transition: 0.4s ease;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
 }
 
 .enter-btn:hover {
-    background: #fff;
+    background-color: #fff;
     color: #000;
 }
 
-/* 6. PROFESSIONAL MODEL GALLERY */
-.model-frame {
-    width: 90%;
-    max-width: 500px;
-    display: flex;
-    justify-content: center;
-}
-
-.model-img {
+/* Splash Footer */
+.splash-footer {
+    position: absolute;
+    bottom: 30px;
     width: 100%;
-    height: auto;
-    max-height: 75vh;
-    object-fit: cover;
-    border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle frame */
-}
-.brand-contact {
-    font-size: 0.5rem;
-    letter-spacing: 3px;
-    color: #666; /* Muted color so it stays low-key */
-    margin-top: 2rem;
-    text-transform: uppercase;
-    transition: 0.3s;
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: #000;
-    color: #fff;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-}
-
-.background-blur {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('background-model.jpg') no-repeat center center/cover;
-    filter: blur(25px) brightness(0.3);
-    z-index: -1;
-}
-
-.snap-container {
-    height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    scrollbar-width: none;
-}
-
-.snap-container::-webkit-scrollbar {
-    display: none;
-}
-
-.snap-section {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly; /* Evenly spaces Welcome, Logo, and Button */
-    align-items: center;
     text-align: center;
-    scroll-snap-align: start;
-    padding: 40px 20px;
 }
 
-.welcome-msg {
-    font-size: 0.65rem;
-    letter-spacing: 5px;
-    line-height: 1.6;
-    opacity: 0.9;
-    text-transform: uppercase;
-}
-
-.brand-hero {
-    width: 100%;
-}
-
-.main-logo {
-    max-width: 220px; /* Slightly smaller for mobile fit */
-    height: auto;
-}
-
-.brand-tagline {
-    font-size: 0.6rem;
-    letter-spacing: 8px;
-    text-transform: uppercase;
-    margin-top: 1.5rem;
-    opacity: 0.8;
-}
-
-.shop-trigger-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.drop-description {
-    font-size: 0.5rem;
-    letter-spacing: 3px;
-    color: #444;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-}
-
-.enter-btn {
-    padding: 12px 35px;
-    border: 1px solid #fff;
-    color: #fff;
+.splash-text {
+    font-size: 0.7rem;
+    color: #555;
     text-decoration: none;
-    font-size: 0.65rem;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
+    transition: color 0.3s;
 }
 
-/* FIX: Removes blue color and underline from email */
-.brand-contact {
-    font-size: 0.5rem;
-    letter-spacing: 2px;
-    color: #444; 
-    text-decoration: none; /* Removes underline */
-    margin-top: 2.5rem;
-    text-transform: lowercase;
+.splash-text:hover {
+    color: #fff;
 }
 
-.model-frame {
-    width: 90%;
-    max-width: 500px;
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .main-logo {
+        width: 180px;
+    }
+    .welcome-msg {
+        font-size: 0.75rem;
+    }
 }
 
-.model-img {
-    width: 100%;
-    height: auto;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
 
 
 
