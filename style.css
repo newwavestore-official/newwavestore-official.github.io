@@ -487,3 +487,154 @@ body { background: #000; color: #fff; font-family: Helvetica, Arial, sans-serif;
     align-items: center;
     gap: 20px;
 }
+.confirmation-body {
+    background: #000;
+    color: #fff;
+    font-family: Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-bottom: 60px;
+}
+
+.confirmation-container {
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.conf-logo {
+    height: 50px;
+}
+
+.conf-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.check-icon {
+    width: 40px;
+    height: 40px;
+    stroke: #fff;
+}
+
+.conf-title {
+    font-size: 1.2rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+}
+
+.conf-subtitle {
+    font-size: 0.65rem;
+    color: #555;
+    letter-spacing: 2px;
+}
+
+.conf-section {
+    width: 100%;
+    border-top: 1px solid #111;
+    padding-top: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.conf-label {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.conf-section p {
+    font-size: 0.8rem;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.conf-total-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.conf-total {
+    font-size: 1rem;
+    font-weight: 900;
+    color: #fff;
+}
+
+.conf-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #111;
+    font-size: 0.8rem;
+    color: #ccc;
+}
+
+.conf-item-name {
+    flex: 1;
+}
+
+.conf-item-detail {
+    color: #555;
+    font-size: 0.7rem;
+    margin-top: 3px;
+}
+
+.conf-item-price {
+    color: #fff;
+    font-weight: 900;
+}
+
+.conf-notice {
+    width: 100%;
+    border-top: 1px solid #111;
+    padding-top: 20px;
+    font-size: 0.75rem;
+    color: #555;
+    line-height: 1.8;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.conf-whatsapp-btn {
+    width: 100%;
+    padding: 18px;
+    background: #fff;
+    color: #000;
+    border: none;
+    font-weight: 900;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-family: inherit;
+}
+
+.conf-whatsapp-btn:hover {
+    background: #ccc;
+}
+
+.conf-back-btn {
+    color: #444;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.conf-back-btn:hover {
+    color: #fff;
+}
