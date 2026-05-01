@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORDER CONFIRMED | NEW WAVE</title>
+    <link rel="icon" type="image/png" href="Logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="confirmation-body">
+
+    <div class="confirmation-container">
+
+        <img src="Logo.png" alt="New Wave" class="conf-logo">
+
+        <div class="conf-status">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="check-icon">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <h1 class="conf-title">ORDER CONFIRMED</h1>
+            <p class="conf-subtitle">REF: <span id="conf-ref"></span></p>
+        </div>
+
+        <div class="conf-section">
+            <h4 class="conf-label">DELIVERY DETAILS</h4>
+            <p id="conf-name"></p>
+            <p id="conf-phone"></p>
+            <p id="conf-address"></p>
+        </div>
+
+        <div class="conf-section">
+            <h4 class="conf-label">YOUR ORDER</h4>
+            <div id="conf-items"></div>
+        </div>
+
+        <div class="conf-section conf-total-row">
+            <h4 class="conf-label">TOTAL PAID</h4>
+            <p id="conf-total" class="conf-total"></p>
+        </div>
+
+        <div class="conf-notice">
+            <p>You'll be redirected to WhatsApp for your delivery update and tracking information.</p>
+        </div>
+
+        <button class="conf-whatsapp-btn" id="conf-whatsapp-btn">
+            CONFIRM 
+        </button>
+
+        <a href="Shop.html" class="conf-back-btn">BACK TO SHOP</a>
+
+    </div>
+
+    <script src="confirmation.js"></script>
+</body>
+</html>
