@@ -115,11 +115,11 @@ body {
     padding: 14px;
     background: #111;
     border: 1px solid #222;
-    border-bottom: none;
     color: #fff;
     font-size: 0.8rem;
     outline: none;
     font-family: inherit;
+    margin-bottom: 8px;
 }
 
 .notify-form input::placeholder {
@@ -143,6 +143,7 @@ body {
     cursor: pointer;
     transition: background 0.3s ease;
     font-family: inherit;
+    margin-top: 8px;
 }
 
 .notify-form button:hover {
