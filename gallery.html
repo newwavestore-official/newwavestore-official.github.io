@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GALLERY | NEW WAVE</title>
+    <link rel="icon" type="image/png" href="Logo.png">
+    <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+
+    <!-- Nav Sidebar -->
+    <div class="nav-overlay" onclick="toggleMenu()"></div>
+    <div class="nav-sidebar" id="nav-sidebar">
+        <div class="nav-sidebar-header">
+            <img src="Logo.png" alt="New Wave" class="nav-logo">
+            <span class="close-nav" onclick="toggleMenu()">✕</span>
+        </div>
+        <nav class="nav-links">
+            <a href="Shop.html" class="nav-link">SHOP</a>
+        </nav>
+    </div>
+
+    <!-- Header -->
+    <header class="gallery-nav">
+        <a href="index.html"><img src="Logo.png" alt="New Wave" class="nav-logo"></a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Gallery -->
+    <main class="gallery">
+        <div class="gallery-item">
+            <img src="g1.jpg" alt="New Wave Lookbook">
+        </div>
+        <div class="gallery-item">
+            <img src="g2.jpg" alt="New Wave Lookbook">
+        </div>
+        <div class="gallery-item">
+            <img src="g3.jpg" alt="New Wave Lookbook">
+        </div>
+        <div class="gallery-item">
+            <img src="g4.jpg" alt="New Wave Lookbook">
+        </div>
+        <div class="gallery-item">
+            <img src="g5.jpg" alt="New Wave Lookbook">
+        </div>
+    </main>
+
+    <script src="gallery.js"></script>
+</body>
+</html>
