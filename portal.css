@@ -1,94 +1,156 @@
-/* portal.css */
-body, html {
-    margin: 0 !important;
-    padding: 0 !important;
-    background-color: #000; /* Match the logo background */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+    background: #000;
+    color: #fff;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    overflow-x: hidden; /* Prevents side-scrolling */
 }
 
-.login-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.login-box {
-    width: 90%;
-    max-width: 350px;
+.container {
     text-align: center;
-    padding: 20px;
-    background-color: #000; /* Seamless with body */
-}
-
-.logo-container {
-    width: 100%;
-    margin-bottom: 30px;
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 40px 0;
 }
 
 .logo {
-    width: 100%;
-    max-width: 280px; /* Adjust this to make the logo look right */
+    width: 180px;
     height: auto;
-    display: block;
-    margin: 0 auto;
 }
 
-.subtitle {
+.countdown {
+    font-family: 'Courier New', monospace;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
     color: #fff;
-    font-size: 10px;
+}
+
+.countdown-label {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    color: #444;
+    text-transform: uppercase;
+    margin-top: -1rem;
+}
+
+.enter-btn {
+    width: 100%;
+    padding: 18px;
+    border: 1px solid #333;
+    background: transparent;
+    color: #333;
+    font-size: 0.8rem;
+    font-weight: 900;
     letter-spacing: 3px;
     text-transform: uppercase;
-    margin-bottom: 25px;
-    opacity: 0.8;
+    cursor: not-allowed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.4s ease;
 }
 
-/* Input Fields */
-input {
-    width: 100%;
-    padding: 16px;
-    margin-bottom: 15px;
-    border: 1px solid #333; /* Dark borders for a sleek look */
-    background: #111; /* Slightly lighter than background */
+.enter-btn.unlocked {
+    border-color: #fff;
     color: #fff;
-    box-sizing: border-box; /* IMPORTANT: keeps inputs from being too wide */
+    cursor: pointer;
+    background: transparent;
+}
+
+.enter-btn.unlocked:hover {
+    background: #fff;
+    color: #000;
+}
+
+.lock-icon {
+    width: 16px;
+    height: 16px;
+    stroke: #333;
+    transition: stroke 0.4s ease;
+}
+
+.enter-btn.unlocked .lock-icon {
+    display: none;
+}
+
+.notify-section {
+    width: 100%;
+    border-top: 1px solid #111;
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.notify-label {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: #555;
+    text-transform: uppercase;
+}
+
+.notify-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+}
+
+.notify-form input {
+    width: 100%;
+    padding: 14px;
+    background: #111;
+    border: 1px solid #222;
+    border-bottom: none;
+    color: #fff;
+    font-size: 0.8rem;
     outline: none;
-    font-size: 14px;
+    font-family: inherit;
 }
 
-input::placeholder {
-    color: #666;
+.notify-form input::placeholder {
+    color: #444;
+    letter-spacing: 1px;
 }
 
-input:focus {
+.notify-form input:focus {
     border-color: #fff;
 }
 
-/* Confirm Button */
-button {
+.notify-form button {
     width: 100%;
-    padding: 16px;
-    background: #fff; /* White button on black background pops */
+    padding: 14px;
+    background: #fff;
     color: #000;
     border: none;
     font-weight: 900;
-    letter-spacing: 2px;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
     cursor: pointer;
-    text-transform: uppercase;
-    transition: 0.3s;
+    transition: background 0.3s ease;
+    font-family: inherit;
 }
 
-button:hover {
+.notify-form button:hover {
     background: #ccc;
 }
 
-#msg {
-    display:none;
-    color: #ff4444;
-    font-size: 12px;
-    margin-top: 15px;
+#notify-msg {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    min-height: 16px;
 }
