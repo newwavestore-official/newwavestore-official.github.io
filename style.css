@@ -192,7 +192,7 @@ body { background: #000; color: #fff; font-family: Helvetica, Arial, sans-serif;
 
 /* Style for the email link in the footer */
 .footer-link {
-    color: #fff; /* Makes it white */
+    color: #888; /* Makes it white */
     text-decoration: none; /* Removes the underline */
     transition: opacity 0.3s ease;
 }
