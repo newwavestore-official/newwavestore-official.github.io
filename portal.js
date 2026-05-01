@@ -1,4 +1,4 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzN_Fs5Ox3w4JoFJDdkILqdDDNa4WqmA3NnAWzlf86wfLsUtN_SXDgPLgkdMxa8CIboAA/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzfG1pwaujELd7XeiTLpqAWW_whcPFx6YdyTYZBngn10u4AnVtRwpCnwCwbbRz1toWkgw/exec';
 const dropDate = new Date("July 1, 2026 00:00:00").getTime();
 
 // Countdown
