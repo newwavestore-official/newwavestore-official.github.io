@@ -57,6 +57,7 @@
 
 
 <!-- Nav Menu Sidebar -->
+<!-- Nav Menu Sidebar (OUTSIDE the header) -->
 <div class="nav-overlay" onclick="toggleMenu()"></div>
 <div class="nav-sidebar" id="nav-sidebar">
     <div class="nav-sidebar-header">
@@ -68,7 +69,11 @@
         <a href="#" class="nav-link" onclick="scrollToFooter()">CONTACT</a>
     </nav>
 </div>
-        <div class="nav-right">
+
+<!-- Header (separate, clean) -->
+<header class="shop-nav">
+    <a href="index.html"><img src="Logo.png" alt="New Wave" class="nav-logo"></a>
+    <div class="nav-right">
         <div class="cart-trigger" onclick="toggleCart()">
             <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
@@ -77,13 +82,13 @@
             </svg>
             <span class="cart-count">0</span>
         </div>
-        <div class="hamburger" onclick="toggleMenu()" id="hamburger-btn">
-    <span></span>
-    <span></span>
-    <span></span>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-        </div>
-    </header>
+    </div>
+</header>
 
     <main class="shop-content">
         <h2 class="drop-title">COLLECTION 01 / DROP 01</h2>
