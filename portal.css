@@ -113,7 +113,7 @@ body {
 .notify-form input {
     width: 100%;
     padding: 14px;
-    background: #ffffff;
+    background: transparent;
     border: 1px solid #ffffff;
     color: #ffffff;
     font-size: 0.8rem;
