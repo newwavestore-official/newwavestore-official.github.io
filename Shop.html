@@ -18,9 +18,7 @@
             <img id="modal-img" src="" alt="Product">
             <h2 id="modal-name"></h2>
             <p id="modal-price"></p>
-            
             <div id="modal-options-container"></div>
-
             <div class="modal-qty-wrap">
                 <span class="label">QUANTITY</span>
                 <div class="qty-ctrl">
@@ -29,13 +27,12 @@
                     <button class="qty-btn" onclick="changeModalQty(1)">+</button>
                 </div>
             </div>
-
             <button class="confirm-add-btn" onclick="confirmAddToCart()">ADD TO BAG</button>
         </div>
     </div>
 
+    <!-- Cart -->
     <div class="cart-overlay" onclick="toggleCart()"></div>
-
     <div class="cart-sidebar" id="cart-sidebar">
         <div class="sidebar-header">
             <h3>YOUR BAG</h3>
@@ -51,44 +48,38 @@
         </div>
     </div>
 
+    <!-- Nav Sidebar -->
+    <div class="nav-overlay" onclick="toggleMenu()"></div>
+    <div class="nav-sidebar" id="nav-sidebar">
+        <div class="nav-sidebar-header">
+            <img src="Logo.png" alt="New Wave" class="nav-logo">
+            <span class="close-nav" onclick="toggleMenu()">✕</span>
+        </div>
+        <nav class="nav-links">
+            <a href="gallery.html" class="nav-link">GALLERY</a>
+            <a href="#" class="nav-link" onclick="scrollToFooter()">CONTACT</a>
+        </nav>
+    </div>
+
+    <!-- Header -->
     <header class="shop-nav">
         <a href="index.html"><img src="Logo.png" alt="New Wave" class="nav-logo"></a>
-        
-
-
-<!-- Nav Menu Sidebar -->
-<!-- Nav Menu Sidebar (OUTSIDE the header) -->
-<div class="nav-overlay" onclick="toggleMenu()"></div>
-<div class="nav-sidebar" id="nav-sidebar">
-    <div class="nav-sidebar-header">
-        <img src="Logo.png" alt="New Wave" class="nav-logo">
-        <span class="close-nav" onclick="toggleMenu()">✕</span>
-    </div>
-    <nav class="nav-links">
-        <a href="gallery.html" class="nav-link">GALLERY</a>
-        <a href="#" class="nav-link" onclick="scrollToFooter()">CONTACT</a>
-    </nav>
-</div>
-
-<!-- Header (separate, clean) -->
-<header class="shop-nav">
-    <a href="index.html"><img src="Logo.png" alt="New Wave" class="nav-logo"></a>
-    <div class="nav-right">
-        <div class="cart-trigger" onclick="toggleCart()">
-            <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <path d="M16 10a4 4 0 0 1-8 0"></path>
-            </svg>
-            <span class="cart-count">0</span>
+        <div class="nav-right">
+            <div class="cart-trigger" onclick="toggleCart()">
+                <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                <span class="cart-count">0</span>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-</header>
+    </header>
 
     <main class="shop-content">
         <h4 class="drop-title">COLLECTION 01 / DROP 01</h4>
