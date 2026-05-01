@@ -3,31 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEW WAVE | Early Access</title>
+    <title>NEW WAVE | COMING SOON</title>
+    <link rel="icon" type="image/png" href="Logo.png">
     <link rel="stylesheet" href="portal.css">
 </head>
 <body>
+    <div class="container">
+        <img src="Logo.png" alt="New Wave Logo" class="logo">
 
-<div class="login-container">
-    <div class="login-box">
-    <div class="logo-container">
-    <img src="Logo.png" alt="New Wave Logo" class="logo">
-</div>
+        <div id="countdown" class="countdown">
+            <span id="days">00</span>d
+            <span id="hours">00</span>h
+            <span id="minutes">00</span>m
+            <span id="seconds">00</span>s
+        </div>
+        <p class="countdown-label">TIME UNTIL DROP 01</p>
 
-        <div class="subtitle">Enter Early Access</div>
-        
-        <form id="accessForm">
-            <input type="text" id="userName" placeholder="FULL NAME" required>
-            <input type="tel" id="userPhone" placeholder="PHONE NUMBER (WHATSAPP)" required>
-            <input type="password" id="passcode" placeholder="PASSCODE" required>
-            
-            <button type="submit" id="submitBtn">CONFIRM</button>
-        </form>
-        
-        <p id="msg">Invalid Passcode. Access Denied.</p>
+        <button class="enter-btn locked" id="enter-btn" disabled>
+            <svg class="lock-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            ENTER SHOP
+        </button>
+
+        <div class="notify-section">
+            <p class="notify-label">BE THE FIRST TO KNOW WHEN WE DROP</p>
+            <div class="notify-form">
+                <input type="email" id="email-input" placeholder="YOUR EMAIL ADDRESS">
+                <button id="notify-btn" onclick="submitEmail()">NOTIFY ME</button>
+            </div>
+            <p id="notify-msg"></p>
+        </div>
     </div>
-</div>
 
-<script src="portal.js"></script>
+    <script src="portal.js"></script>
 </body>
 </html>
