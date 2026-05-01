@@ -50,19 +50,17 @@ function submitEmail() {
     fetch(scriptURL + '?email=' + encodeURIComponent(email), {
     method: 'GET',
     mode: 'no-cors'
-})
-    }).then(() => {
-        msg.style.color = '#fff';
-        msg.style.letterSpacing = '2px';
-        msg.style.fontWeight = '900';
-        msg.innerText = "YOU'RE ON THE LIST!";
-        document.getElementById('email-input').value = '';
-        btn.innerText = 'NOTIFY ME';
-        btn.disabled = false;
-    }).catch(() => {
-        msg.style.color = '#ff4444';
-        msg.innerText = 'SOMETHING WENT WRONG. TRY AGAIN.';
-        btn.innerText = 'NOTIFY ME';
-        btn.disabled = false;
-    });
-}
+}).then(() => {
+    msg.style.color = '#fff';
+    msg.style.letterSpacing = '2px';
+    msg.style.fontWeight = '900';
+    msg.innerText = "YOU'RE ON THE LIST!";
+    document.getElementById('email-input').value = '';
+    btn.innerText = 'NOTIFY ME';
+    btn.disabled = false;
+}).catch(() => {
+    msg.style.color = '#ff4444';
+    msg.innerText = 'SOMETHING WENT WRONG. TRY AGAIN.';
+    btn.innerText = 'NOTIFY ME';
+    btn.disabled = false;
+});
