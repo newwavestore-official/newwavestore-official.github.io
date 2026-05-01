@@ -329,7 +329,16 @@ body { background: #000; color: #fff; font-family: Helvetica, Arial, sans-serif;
     transition: 0.2s ease;
 }
 
+
+/* Transparent hover effect for the sidebar button */
+.checkout-trigger-btn:hover {
+    background-color: transparent !important;
+    color: #fff !important; 
+    border: 1px solid #fff !important; /* Keeps the button shape visible */
+}
+
+/* Tactile feedback for mobile users */
 .checkout-trigger-btn:active {
-    background-color: #ccc;
+    background-color: rgba(255, 255, 255, 0.1) !important;
     transform: scale(0.98);
 }
