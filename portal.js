@@ -51,9 +51,11 @@ function submitEmail() {
     btn.disabled = true;
 
     fetch(scriptURL, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: JSON.stringify({ email: email })
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'email=' + encodeURIComponent(email)
+})
     }).then(() => {
         msg.style.color = '#fff';
 msg.style.letterSpacing = '2px';
