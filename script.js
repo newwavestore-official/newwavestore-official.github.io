@@ -119,3 +119,16 @@ function updateUI() {
 
 function openCheckout() { if (cart.length === 0) return; toggleCart(); document.getElementById('checkout-bar').classList.add('active'); }
 function closeCheckout() { document.getElementById('checkout-bar').classList.remove('active'); }
+function toggleMenu() {
+    const sidebar = document.getElementById('nav-sidebar');
+    const overlay = document.querySelector('.nav-overlay');
+    sidebar.classList.toggle('open');
+    overlay.style.display = sidebar.classList.contains('open') ? 'block' : 'none';
+}
+
+function scrollToFooter() {
+    toggleMenu();
+    setTimeout(() => {
+        document.querySelector('.shop-footer').scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+}
