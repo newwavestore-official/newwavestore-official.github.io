@@ -132,31 +132,3 @@ function scrollToFooter() {
         document.querySelector('.shop-footer').scrollIntoView({ behavior: 'smooth' });
     }, 300);
 }
-<script>
-document.querySelector('.enter-btn').addEventListener('click', function(e) {
-    e.preventDefault();
-
-    const container = document.querySelector('.splash-container');
-    const logo = document.querySelector('.main-logo');
-
-    // Fade out everything except the logo
-    document.querySelector('.welcome-msg').style.transition = 'opacity 0.4s ease';
-    document.querySelector('.welcome-msg').style.opacity = '0';
-    document.querySelector('.shop-trigger-area').style.transition = 'opacity 0.4s ease';
-    document.querySelector('.shop-trigger-area').style.opacity = '0';
-    document.querySelector('.splash-footer').style.transition = 'opacity 0.4s ease';
-    document.querySelector('.splash-footer').style.opacity = '0';
-
-    // After fade out, animate the logo
-    setTimeout(() => {
-        logo.style.transition = 'transform 0.8s ease, filter 0.8s ease';
-        logo.style.transform = 'scale(1.3)';
-        logo.style.filter = 'drop-shadow(0 0 30px rgba(255,255,255,0.6))';
-    }, 400);
-
-    // Then redirect
-    setTimeout(() => {
-        window.location.href = 'Shop.html';
-    }, 1400);
-});
-</script>
